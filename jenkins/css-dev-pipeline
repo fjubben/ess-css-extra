@@ -22,16 +22,16 @@ pipeline {
     timestamps()
   }
   stages {
-    stage ('Build All') {
+    stage('Build All') {
       steps {
         
       }
     }
-    stage ('Download Repos and Compile') {
+    stage('Download Repos and Compile') {
       steps {
 
       }
-    }stage ('Clean Up') {
+    }stage('Clean Up') {
       steps {
 
       }
