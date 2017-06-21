@@ -1,0 +1,33 @@
+#!/usr/local/Cellar/groovy/2.4.11/bin/groovy
+pipeline {
+
+  /*
+   * Agent sets up which environment that the pipeline will execute inside.
+   * Can be specified to label of certain slave set up a docker container
+   */
+  agent any
+
+
+  /*
+   * Environment sets up a map containing key : value pairs
+   */
+  environment {
+    buildPath = 'Original-CS-Studio'
+    sourceRepo = 'https://github.com/ControlSystemStudio/'
+    branch = 'master'
+    email = 'claudio.rosati@esss.se'
+  }
+  options {
+
+  }
+  stages {
+    steps {
+
+    }
+    steps {
+
+    }
+  }
+
+
+}
