@@ -19,12 +19,12 @@ pipeline {
   options {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
-    timestamps() 
+    timestamps()
   }
   stages {
     stage ('Build All') {
       steps {
-
+        sh "echo "hello $email""
       }
     }
     stage ('Download Repos and Compile') {
@@ -39,8 +39,8 @@ pipeline {
 
   }
   post {
-    unstable {
-      to(subject: "pipeline failed" , body: "something failed in this run" , to: $email)
+    always {
+      to(subject: "mail-function works /jesper" , body: "tell me if you recieved this" , to: $email)
     }
   }
 

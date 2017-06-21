@@ -24,7 +24,7 @@ pipeline {
   stages {
     stage ('Build All') {
       steps {
-        sh "echo "hello $email""
+        
       }
     }
     stage ('Download Repos and Compile') {
