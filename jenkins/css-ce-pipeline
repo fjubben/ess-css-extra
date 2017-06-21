@@ -22,21 +22,13 @@ pipeline {
     timestamps()
   }
   stages {
-    stage('Build All') {
+    stage('BuildAll') {
       steps{
         echo "hello $email"
       }
     }
-    stage('Download Repos and Compile') {
-      steps{
-        echo "hello $email"
-      }
-    }stage('Clean Up') {
-      steps{
-        echo "hello $email"
-      }
-    }
-
   }
+
+  
 
 }
