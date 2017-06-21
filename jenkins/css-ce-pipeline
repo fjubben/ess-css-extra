@@ -23,25 +23,23 @@ pipeline {
   }
   stages {
     stage('Build All') {
-      steps {
-        sh "echo "hello $email""
+      steps{
+        echo "hello $email"
       }
     }
     stage('Download Repos and Compile') {
-      steps {
+      steps{
 
       }
     }stage('Clean Up') {
-      steps {
+      steps{
 
       }
     }
 
   }
   post {
-    always {
-      to(subject: "mail-function works /jesper" , body: "tell me if you recieved this" , to: $email)
-    }
+
   }
 
 }

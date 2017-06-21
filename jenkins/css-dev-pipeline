@@ -23,16 +23,16 @@ pipeline {
   }
   stages {
     stage('Build All') {
-      steps {
+      steps{
         
       }
     }
     stage('Download Repos and Compile') {
-      steps {
+      steps{
 
       }
     }stage('Clean Up') {
-      steps {
+      steps{
 
       }
     }
