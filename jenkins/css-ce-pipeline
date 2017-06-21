@@ -7,7 +7,6 @@ pipeline {
    */
   agent any
 
-
   /*
    * Environment sets up a map containing key : value pairs
    */

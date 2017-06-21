@@ -1,0 +1,18 @@
+##Initial proceedings
+All jobs are currently created inside Jenkins by clicking and inserting code. Jenkins then generates a xml-file named config.xml specific to each job. The community edition, ess-ics production and development all very similar job-scripts to set up the workspace, download fresh clones, build, and compiling everything.
+
+The idea is to collect the scripts that they have in common and automate a pipeline running them. Having just a pipeline with the jobs and a config-file that sets up the different needs for the different versions. Having all the configurations collected and condensed allows for easy sharing and allows the entire community to contribute and extend the script.  
+
+The pipeline will show up as a job in the Jenkins menu. We want setting up the pipeline to have as little configuration as possible inside the Jenkins portal. No magic should happen in Jenkins. To copy the pipeline all you need to do is to link to the repo the jenkinsfile is in and the path to it from the repo-root.
+
+
+---
+##Step by step creating a pipeline
+1.	Have Jenkins 2.x with pipeline and version control plugins installed
+2.	Press “New Item” [top left]
+3.	Choose name and the item type “Pipeline”
+4.	In the menu furthest down called “pipeline” change the definition to “Pipeline script from SCM”
+5.	Paste the url to the repo containing the Jenkinsfile and the path to it from within the repo
+---
+##Sctructure of scriptfiles
+The different versions job sets do mainly the same thing baring some initial and final steps. We want to bulk the core jobs together in to one pipeline and encapsulate it inside another bigger version specific pipeline containing parameter for the specific environment and feed them to the core pipeline.
