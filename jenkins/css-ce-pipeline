@@ -30,7 +30,7 @@ pipeline {
   }
 post{
   success{
-    to(subject: 'first pipeline works', body: 'hello', to: "$email")
+    mail(subject: 'first pipeline works', body: 'hello', to: "$email")
   }
 }
 
