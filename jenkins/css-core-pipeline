@@ -1,4 +1,4 @@
-#!/usr/local/Cellar/groovy/2.4.11/bin/groovy
+#!groovy​
 pipeline {
 
   /*
@@ -16,32 +16,20 @@ pipeline {
     branch = 'master'
     email = 'claudio.rosati@esss.se'
   }
+
   options {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
     timestamps()
   }
   stages {
-    stage('Build All') {
+    stage 'Build All' {
       steps{
-
-      }
-    }
-    stage('Download Repos and Compile') {
-      steps{
-
-      }
-    }stage('Clean Up') {
-      steps{
+        echo "hello from core, ${param.pass1}"
 
       }
     }
 
-  }
-  post {
-    unstable {
-      to(subject: "pipeline failed" , body: "something failed in this run" , to: $email)
-    }
   }
 
 }

@@ -16,21 +16,30 @@ pipeline {
     branch = 'master'
     email = 'claudio.rosati@esss.se'
   }
+  /*
+   * Global parameters
+   */
+  properties([
+    parameters([
+      string(name: 'pass1', defaultValue: 'itwoooooorks')
+    ])
+  ])
   options {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
     timestamps()
   }
   stages {
-    stage('BuildAll') {
-      steps{
+    stage 'BuildAll' {
+      steps {
         echo "hello $email"
+        build 'css-core-pipelines'
       }
     }
   }
 post{
   success{
-    mail(subject: 'first pipeline works', body: 'hello', to: "$email")
+    mail subject: 'first pipeline works', body: 'hello', to: "$email"
   }
 }
 
