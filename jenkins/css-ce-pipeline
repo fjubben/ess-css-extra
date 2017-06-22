@@ -15,7 +15,6 @@ pipeline {
     sourceRepo = 'https://github.com/ControlSystemStudio/'
     branch = 'master'
     email = 'claudio.rosati@esss.se'
-    env.pass1 = 'wedidit'
   }
 
   options {
@@ -29,7 +28,7 @@ pipeline {
       steps {
         echo "hello $email"
         echo "hello ${env.WORKSPACE}"
-        //build 'jenkins/css-core-pipelines'
+        //build '${env.WORKSPACE}/jenkins/css-core-pipelines'
       }
     }
   }
