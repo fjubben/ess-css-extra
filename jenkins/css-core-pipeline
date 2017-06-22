@@ -23,7 +23,7 @@ pipeline {
     timestamps()
   }
   stages {
-    stage 'Build All' {
+    stage('Build All') {
       steps{
         echo "hello from core, ${param.pass1}"
 

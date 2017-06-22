@@ -26,7 +26,7 @@ pipeline {
 
   }
   stages {
-    stage 'BuildAll' {
+    stage('BuildAll') {
       steps {
         echo "hello $email"
         build 'css-core-pipelines'
