@@ -1,4 +1,4 @@
-#!/usr/local/Cellar/groovy/2.4.11/bin/groovy
+#!groovy​
 pipeline {
 
   /*
