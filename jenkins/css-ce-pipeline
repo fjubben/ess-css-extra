@@ -29,7 +29,7 @@ pipeline {
     stage('BuildAll') {
       steps {
         echo "hello $email"
-        build 'css-core-pipelines'
+        build 'jenkins/css-core-pipelines'
       }
     }
   }
