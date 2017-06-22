@@ -40,7 +40,9 @@ pipeline {
         echo "hello ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}/jenkins"
-        core.pleasework "$pass1"
+        script{
+          core.pleasework "$pass1"
+        }
       }
     }
   }
