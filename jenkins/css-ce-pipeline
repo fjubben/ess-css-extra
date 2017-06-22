@@ -18,9 +18,9 @@ pipeline {
   }
 
   options {
-    disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
-    timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
-    timestamps()
+    disableConcurrentBuilds //Disallow concurrent executions of the Pipeline
+    timeout time:4, unit: 'HOURS' //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
+    timestamps
 
   }
   stages {
@@ -34,7 +34,7 @@ pipeline {
         echo "hello $email"
         echo "hello ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}/jenkins"
-        build "${env.WORKSPACE}/jenkins/css-core-pipeline"
+        build "css-core-pipeline"
       }
     }
   }
