@@ -20,6 +20,7 @@ pipeline {
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
     pass1 = 'it works'
+    core = load "jenkins/css-core-pipeline.groovy"
   }
 
   options {
@@ -39,7 +40,7 @@ pipeline {
         echo "hello ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}/jenkins"
-        build(job: "${env.WORKSPACE}/jenkins/css-core-pipeline", parameters: [[$class: 'StringParameterValue', name: 'param1', value: "$pass1" ]])
+        core.pleasework "$pass1"
       }
     }
   }
