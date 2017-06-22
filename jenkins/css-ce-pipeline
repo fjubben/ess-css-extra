@@ -15,6 +15,7 @@ pipeline {
     sourceRepo = 'https://github.com/ControlSystemStudio/'
     branch = 'master'
     email = 'claudio.rosati@esss.se'
+    pass1 = 'it works'
   }
 
   options {
