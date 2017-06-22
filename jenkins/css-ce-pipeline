@@ -13,7 +13,7 @@ pipeline {
   environment {
     buildPath = 'Original-CS-Studio'
     sourceRepo = 'https://github.com/ControlSystemStudio/'
-    branch = 'master'
+    branchext = 'master'
     email = 'claudio.rosati@esss.se'
     pass1 = 'it works'
   }
