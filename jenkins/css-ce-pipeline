@@ -20,7 +20,7 @@ pipeline {
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
     pass1 = 'it works'
-    core = load "jenkins/css-core-pipeline.groovy"
+    core = load "groovyfile"
   }
 
   options {
