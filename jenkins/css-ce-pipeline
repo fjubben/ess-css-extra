@@ -25,11 +25,11 @@ pipeline {
 
   }
   stages {
-    stage('clone css-extra'){
+  /*  stage('clone css-extra'){
       steps {
         git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
       }
-    }
+    }*/
     stage('BuildAll') {
       steps {
         echo "hello $email"
