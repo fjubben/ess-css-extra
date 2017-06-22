@@ -25,17 +25,17 @@ pipeline {
 
   }
   stages {
-    /*stage('clone css-extra'){
+    stage('clone css-extra'){
       steps {
         git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
       }
-    }*/
+    }
     stage('BuildAll') {
       steps {
         echo "hello $email"
         echo "hello ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}/jenkins"
-        build(job: "${env.WORKSPACE}/jenkins/css-core-pipeline")
+        //build(job: "${env.WORKSPACE}/jenkins/css-core-pipeline", parameters: [[$class: 'StringParameterValue', name: 'param1', value: "$pass1" ]])
       }
     }
   }
