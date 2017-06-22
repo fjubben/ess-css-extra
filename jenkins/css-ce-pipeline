@@ -36,11 +36,9 @@ pipeline {
     }
     stage('BuildAll') {
       steps {
-        echo "hello $email"
         echo "hello ${env.WORKSPACE}"
-        echo "hello ${env.JOB_NAME}"
-        echo "hello ${env.BUILD_ID}"
-        sh 'ls jenkins/'
+        sh 'ls ${env.WORKSPACE}'
+        sh 'ls ${env.WORKSPACE}/jenkins'
         build(job: '${env.WORKSPACE}/jenkins/css-core-pipeline', parameters: [[$class: 'StringParameterValue', name: 'param1', value: "$pass1" ]])
       }
     }
