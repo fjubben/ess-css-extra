@@ -15,10 +15,9 @@ pipeline {
     sourceRepo = 'https://github.com/ControlSystemStudio/'
     branch = 'master'
     email = 'claudio.rosati@esss.se'
+    directory = pwd()
   }
-  parameters {
-    string(name: 'pass1', defaultValue: 'itwoooooorks')
-  }
+
   options {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
@@ -29,7 +28,8 @@ pipeline {
     stage('BuildAll') {
       steps {
         echo "hello $email"
-        build 'jenkins/css-core-pipelines'
+        echo "$directory"
+        //build 'jenkins/css-core-pipelines'
       }
     }
   }
