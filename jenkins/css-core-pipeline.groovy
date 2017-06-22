@@ -6,7 +6,7 @@
  */
 {
   def pleasework(trythis) {
-    echo "thank me it works:  $trythis"
+    sh "echo thank me it works:  $trythis"
   }
   return this
 }
