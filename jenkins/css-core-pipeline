@@ -25,7 +25,7 @@ pipeline {
   stages {
     stage('Build All') {
       steps{
-        echo "hello from core, ${param.pass1}"
+        echo "hello from core, ${env.pass1}"
 
       }
     }
