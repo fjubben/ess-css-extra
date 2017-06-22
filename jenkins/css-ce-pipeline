@@ -41,7 +41,7 @@ pipeline {
         echo "hello ${env.JOB_NAME}"
         echo "hello ${env.BUILD_ID}"
         sh 'ls jenkins/'
-        build(job: '/css-core-pipeline', parameters: [[$class: 'StringParameterValue', name: 'param1', value: "$pass1" ]])
+        build(job: 'jenkins/css-core-pipeline', parameters: [[$class: 'StringParameterValue', name: 'param1', value: "$pass1" ]])
       }
     }
   }
