@@ -34,7 +34,7 @@ pipeline {
         echo "hello $email"
         echo "hello ${env.WORKSPACE}"
         sh "ls ${env.WORKSPACE}/jenkins"
-        build "${env.WORKSPACE}/jenkins/css-core-pipelines"
+        build "${env.WORKSPACE}/jenkins/css-core-pipeline"
       }
     }
   }
