@@ -50,15 +50,15 @@ pipeline {
     }
     stage('workspace-prep 00000'){
          steps{
-          script{
-            def folder = new File("${env.WORKSPACE}/jenkins/workspace/${param.buildPath}")
-
-            if (!folder.exists()){
-              folder.mkdir()
-            }
-
-
-          }
+          sh 'if [[ -d /${env.WORKSPACE}/jenkins/workspace/Original-CS-Studio ]];
+                  then
+                    rm -fr /${env.WORKSPACE}/jenkins/workspace/${param.buildPath}/*;
+                    rm -fr /${env.WORKSPACE}/jenkins/workspace/${param.buildPath}/.git;
+                    rm -rf /${env.WORKSPACE}/jenkins/workspace/${param.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*;
+                    rm -rf /${env.WORKSPACE}/jenkins/workspace/${param.buildPath}/.m2/p2/osgi/bundle/org.diirt.*;
+                  else
+                    mkdir -pv /${env.WORKSPACE}/jenkins/workspace/${param.buildPath};
+                  fi'
          }
 
     }
