@@ -60,7 +60,7 @@ pipeline {
             dir("maven-osgi-bundle"){
               git(url: 'https://github.com/ControlSystemStudio/maven-osgi-bundles.git', branch: 'master')
             }
-            sh "export MAVEN_OPTS='-Xmx2048m -Xms1024M -Xss128M -XX\:-UseGCOverheadLimit'"
+            sh "export MAVEN_OPTS='-Xmx2048m -Xms1024M -Xss128M'"
             sh "export MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites""
             sh "cd maven-osgi-bundles; mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify"
 
