@@ -29,7 +29,7 @@ pipeline {
     timestamps()
 
   }
-  triggers { cron('H H{3-7} * * *') }
+  triggers { cron('H 3-7 * * *') }
   stages {
    stage('clone css-extra'){
       steps {
