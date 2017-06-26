@@ -116,7 +116,7 @@ pipeline {
           }
         }
      }
-     stage('CS-Studio CE 00700 - org.csstudio.ess.product){
+     stage('CS-Studio CE 00700 - org.csstudio.ess.product'){
         steps{
           dir("org.csstudio.ess.product"){
             git(url: 'https://github.com/ControlSystemStudio/org.csstudio.ess.product.git', branch: 'master')
