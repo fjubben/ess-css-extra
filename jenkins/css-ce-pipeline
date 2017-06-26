@@ -47,14 +47,16 @@ pipeline {
       }
     }
     stage('workspace-prep 00000'){
-         steps{script{
-            if (env.BRANCH_NAME == 'master') {
-                echo 'I only execute on the master branch'
-            } else {
-                echo 'I execute elsewhere'
+         steps{
+          script{
+            def folder = new file("${env.WORKSPACE}/jenkins/workspace/${param.buildPath}")
+
+            if (!folder.exists()){
+              folder.mkdir()
             }
-            sh 'if [[ -d "/home/jenkins/workspace/hellopipeline" ]]'
-         }
+
+
+          }
          }
 
     }
