@@ -51,7 +51,7 @@ pipeline {
     stage('workspace-prep 00000'){
          steps{
           script{
-            def folder = new file("${env.WORKSPACE}/jenkins/workspace/${param.buildPath}")
+            def folder = new File("${env.WORKSPACE}/jenkins/workspace/${param.buildPath}")
 
             if (!folder.exists()){
               folder.mkdir()
