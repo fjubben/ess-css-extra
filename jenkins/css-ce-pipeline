@@ -37,7 +37,7 @@ pipeline {
       steps {
         echo "hello ${env.WORKSPACE}"
           echo "branch name = ${env.BRANCH_NAME}"
-        shell('''ls .
+        sh(script: '''ls .
         java -version
         export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
         export MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"''').stripIndent()
