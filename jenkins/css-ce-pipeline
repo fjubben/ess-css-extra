@@ -52,7 +52,7 @@ pipeline {
             rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.* \
             rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.* \
           else mkdir -pv /${env.WORKSPACE}/${env.buildPath} \
-          fi""".stripIndent()
+          fi""".stripIndent(), returnStdout: true
          }
     }
     stage('clone css-extra 00100'){
