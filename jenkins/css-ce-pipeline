@@ -58,7 +58,7 @@ pipeline {
      stage('maven-osgi-bundle'){
         steps {
             dir("maven-osgi-bundle"){
-              git(url: https://github.com/ControlSystemStudio/maven-osgi-bundles.git, branch: 'master')
+              git(url: 'https://github.com/ControlSystemStudio/maven-osgi-bundles.git', branch: 'master')
             }
         }
      }
