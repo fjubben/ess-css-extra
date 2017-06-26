@@ -19,7 +19,7 @@ pipeline {
   environment {
     buildPath = '.'
     sourceRepo = 'https://github.com/ControlSystemStudio/'
-    mvnXML = 'settings'
+    mvnXML = 'settings-for-jenkins-ca.xml'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
     MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
