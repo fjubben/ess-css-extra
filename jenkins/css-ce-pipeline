@@ -40,7 +40,9 @@ pipeline {
         echo "branch name = ${env.BRANCH_NAME}"
         sh 'java -version'
 
-      
+        sh '''export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"'''
+        sh '''export MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"'''
+
       }
     }
     stage('workspace-prep 00000'){
