@@ -36,12 +36,11 @@ pipeline {
     stage('BuildAll') {
       steps {
         echo "hello ${env.WORKSPACE}"
-        sh 'ls .'
-        echo "branch name = ${env.BRANCH_NAME}"
-        sh 'java -version'
-
-        sh '''export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"'''
-        sh '''export MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"'''
+          echo "branch name = ${env.BRANCH_NAME}"
+        shell('''ls .
+        java -version
+        export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
+        export MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"''').stripIndent()
 
       }
     }
@@ -61,7 +60,7 @@ pipeline {
         steps {
             dir("maven-osgi-bundle"){
               git(url: 'https://github.com/ControlSystemStudio/maven-osgi-bundles.git', branch: 'master')
-              sh "mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify"
+              sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
             }
         }
      }
