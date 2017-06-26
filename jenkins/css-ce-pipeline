@@ -60,7 +60,7 @@ pipeline {
         steps {
             dir("maven-osgi-bundle"){
               git(url: 'https://github.com/ControlSystemStudio/maven-osgi-bundles.git', branch: 'master')
-              sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
+              sh "mvn $MVNOPT --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }
      }
@@ -68,7 +68,7 @@ pipeline {
         steps{
           dir("cs-studio-thirdparty"){
             git(url: 'https://github.com/ControlSystemStudio/cs-studio-thirdparty.git', branch: 'master')
-            sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
+            sh "mvn $MVNOPT --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
      }
@@ -76,8 +76,7 @@ pipeline {
         steps{
           dir("diirt"){
             git(url: 'https://github.com/ControlSystemStudio/diirt.git', branch: 'master')
-            sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
-
+            sh "mvn $MVNOPT --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
      }
@@ -85,8 +84,8 @@ pipeline {
      steps{
           dir("cs-studio"){
             git(url: 'https://github.com/ControlSystemStudio/cs-studio.git', branch: 'master')
-            sh '''cd core; mvn $MVNOPT --settings ../../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
-            sh '''cd application; mvn $MVNOPT --settings ../../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
+            sh "cd core; mvn $MVNOPT --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
+            sh "cd application; mvn $MVNOPT --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
      }
@@ -95,7 +94,7 @@ pipeline {
         steps{
           dir("org.csstudio.display.builder"){
             git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: 'master')
-            sh "mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify".stripIndent()
+            sh "mvn $MVNOPT --settings ../ess-css-extra/maven/${mvnXML} -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify".stripIndent()
           }
         }
      }
@@ -103,7 +102,7 @@ pipeline {
         steps{
           dir("org.csstudio.product"){
             git(url: 'https://github.com/kasemir/org.csstudio.product.git', branch: 'master')
-            sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''.stripIndent()
+            sh "mvn $MVNOPT --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
      }
@@ -111,7 +110,7 @@ pipeline {
         steps{
           dir("org.csstudio.ess.product"){
             git(url: 'https://github.com/ControlSystemStudio/org.csstudio.ess.product.git', branch: 'master')
-            sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''.stripIndent()
+            sh "mvn $MVNOPT --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
      }
