@@ -22,4 +22,9 @@ The different versions job sets do mainly the same thing baring some initial and
 
 ## Jenkinsfile syntax and tips for writing it
 
-[Supported steps (predefined methods) for the jenkins file](https://jenkins.io/doc/pipeline/steps/) 
+[Supported steps (predefined methods) for the jenkins file](https://jenkins.io/doc/pipeline/steps/)
+
+## Useful tips
+use triple ' (''') to bypass groovys templating which can give you trouble sometimes.
+
+substitution (using $variable) requires explicit string string sign ("") 
