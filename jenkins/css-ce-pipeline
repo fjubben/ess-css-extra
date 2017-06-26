@@ -29,6 +29,7 @@ pipeline {
     timestamps()
 
   }
+  triggers { cron('H H{3-7} * * *') }
   stages {
    stage('clone css-extra'){
       steps {
@@ -38,10 +39,12 @@ pipeline {
     stage('BuildAll') {
       steps {
         echo "hello ${env.WORKSPACE}"
-        sh "ls ${env.WORKSPACE}"
-        sh "ls ${env.WORKSPACE}/jenkins"
+        sh 'java -version'
+
         script{
-          core.pleasework "$pass1"
+          if (env.BRANCH_NAME == 'master'){
+            echo "hello, we're on master"
+          }
         }
       }
     }
