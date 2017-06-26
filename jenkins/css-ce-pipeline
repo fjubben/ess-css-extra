@@ -42,9 +42,15 @@ pipeline {
         sh 'java -version'
 
         script{
-          if (env.BRANCH_NAME == 'master'){
-            println("hello, we're on master")
-          }
+        if [[ -d /home/jenkins/workspace/Original-CS-Studio ]]
+then
+rm -fr /home/jenkins/workspace/Original-CS-Studio/*
+rm -fr /home/jenkins/workspace/Original-CS-Studio/.git
+rm -rf /home/jenkins/workspace/Original-CS-Studio/.m2/p2/osgi/bundle/org.csstudio.*
+rm -rf /home/jenkins/workspace/Original-CS-Studio/.m2/p2/osgi/bundle/org.diirt.*
+else
+mkdir -pv /home/jenkins/workspace/Original-CS-Studio
+fi
         }
       }
     }
