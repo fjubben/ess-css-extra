@@ -22,6 +22,7 @@ pipeline {
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
     MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
   }
 
   options {
@@ -38,7 +39,6 @@ pipeline {
       steps {
         echo "hello ${env.WORKSPACE}"
         echo "branch name = ${env.BRANCH_NAME}"
-        sh '''export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"'''
       }
     }
     stage('workspace-prep 00000'){
