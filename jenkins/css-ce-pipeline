@@ -39,6 +39,8 @@ pipeline {
     stage('BuildAll') {
       steps {
         echo "hello ${env.WORKSPACE}"
+        sh 'ls .'
+        echo "branch name = ${env.BRANCH_NAME}"
         sh 'java -version'
 
 
@@ -51,6 +53,7 @@ pipeline {
             } else {
                 echo 'I execute elsewhere'
             }
+            sh 'if [[ -d "/home/jenkins/workspace/hellopipeline" ]]'
          }
          }
 
