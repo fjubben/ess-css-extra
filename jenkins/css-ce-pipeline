@@ -43,7 +43,7 @@ pipeline {
 
         script{
           if (env.BRANCH_NAME == 'master'){
-            echo "hello, we're on master"
+            println("hello, we're on master")
           }
         }
       }
