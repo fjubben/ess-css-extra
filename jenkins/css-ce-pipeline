@@ -19,10 +19,9 @@ pipeline {
   environment {
     buildPath = '.'
     sourceRepo = 'https://github.com/ControlSystemStudio/'
+    mvnXML = 'settings'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
-    pass1 = 'it works'
-    core = load "groovyfile"
   }
 
   options {
@@ -47,6 +46,7 @@ pipeline {
     stage('workspace-prep 00000'){
          steps{
           sh script: "if [[ -d /${env.WORKSPACE}/${env.buildPath} ]]; then rm -fr /${env.WORKSPACE}/${env.buildPath}/*;rm -fr /${env.WORKSPACE}/${env.buildPath}/.git;rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*;rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.*;else mkdir -pv /${env.WORKSPACE}/${env.buildPath};fi", returnStdout: true
+          //alternative = nuke with deletedir step and then create new
          }
     }
     stage('clone css-extra 00100'){
