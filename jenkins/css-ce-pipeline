@@ -46,12 +46,12 @@ pipeline {
     }
     stage('workspace-prep 00000'){
          steps{
-          sh "if [[ -d /${env.WORKSPACE}/${env.buildPath} ]]; then
-            rm -fr /${env.WORKSPACE}/${env.buildPath}/*;
-            rm -fr /${env.WORKSPACE}/${env.buildPath}/.git;
-            rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*;
-            rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.*;
-          else mkdir -pv /${env.WORKSPACE}/${env.buildPath};
+          sh "if [[ -d /${env.WORKSPACE}/${env.buildPath} ]] then
+            rm -fr /${env.WORKSPACE}/${env.buildPath}/*
+            rm -fr /${env.WORKSPACE}/${env.buildPath}/.git
+            rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*
+            rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.*
+          else mkdir -pv /${env.WORKSPACE}/${env.buildPath}
           fi".stripIndent().trim()
          }
     }
