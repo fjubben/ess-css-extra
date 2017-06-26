@@ -46,7 +46,7 @@ pipeline {
     }
     stage('workspace-prep 00000'){
          steps{
-          sh script: "if [[ -d /${env.WORKSPACE}/${env.buildPath} ]] then;rm -fr /${env.WORKSPACE}/${env.buildPath}/*;rm -fr /${env.WORKSPACE}/${env.buildPath}/.git;rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*;rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.*;else mkdir -pv /${env.WORKSPACE}/${env.buildPath};fi", returnStdout: true
+          sh script: "if [[ -d /${env.WORKSPACE}/${env.buildPath} ]]; then rm -fr /${env.WORKSPACE}/${env.buildPath}/*;rm -fr /${env.WORKSPACE}/${env.buildPath}/.git;rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*;rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.*;else mkdir -pv /${env.WORKSPACE}/${env.buildPath};fi", returnStdout: true
          }
     }
     stage('clone css-extra 00100'){
