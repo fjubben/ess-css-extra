@@ -2,7 +2,6 @@
 import java.io.*
 
 pipeline {
-
   /*
    * Agent sets up which environment that the pipeline will execute inside.
    * Can be specified to label of certain slave set up a docker container
@@ -22,7 +21,7 @@ pipeline {
     mvnXML = 'settings-for-jenkins-ca.xml'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
-    MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
 
   options {
@@ -32,6 +31,7 @@ pipeline {
 
   }
   triggers { cron('H 3-7 * * *') }
+  /*
   stages {
     stage('BuildAll') {
       steps {
@@ -65,6 +65,7 @@ pipeline {
             }
         }
      }
+     */
      stage('CS-Studio CE 00300 - cs-studio-thirdparty'){
         steps{
           dir("cs-studio-thirdparty"){
