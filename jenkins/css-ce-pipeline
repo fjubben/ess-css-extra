@@ -31,8 +31,9 @@ pipeline {
 
   }
   triggers { cron('H 3-7 * * *') }
-  /*
+
   stages {
+  /*
     stage('BuildAll') {
       steps {
         echo "hello ${env.WORKSPACE}"
