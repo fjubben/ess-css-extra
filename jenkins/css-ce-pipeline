@@ -17,7 +17,7 @@ pipeline {
    * Environment sets up a map containing key : value pairs
    */
   environment {
-    buildPath = 'Original-CS-Studio'
+    buildPath = '.'
     sourceRepo = 'https://github.com/ControlSystemStudio/'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
@@ -85,10 +85,8 @@ pipeline {
      steps{
           dir("cs-studio"){
             git(url: 'https://github.com/ControlSystemStudio/cs-studio.git', branch: 'master')
-            sh '''cd core
-            mvn $MVNOPT --settings ../../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify
-            cd ../applications
-            mvn $MVNOPT --settings ../../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''.stripIndent()
+            sh '''cd core; mvn $MVNOPT --settings ../../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
+            sh '''cd application; mvn $MVNOPT --settings ../../ess-css-extra/maven/settings-for-jenkins-original.xml clean verify'''
           }
         }
      }
