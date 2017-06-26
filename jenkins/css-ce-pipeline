@@ -1,4 +1,6 @@
 #!groovy​
+import groovy.json.*
+
 pipeline {
 
   /*
