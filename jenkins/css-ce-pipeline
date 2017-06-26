@@ -33,7 +33,7 @@ pipeline {
   triggers { cron('H 3-7 * * *') }
 
   stages {
-  /*
+
     stage('BuildAll') {
       steps {
         echo "hello ${env.WORKSPACE}"
@@ -41,8 +41,6 @@ pipeline {
         sh '''ls .
         java -version
         export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"'''
-
-
       }
     }
     stage('workspace-prep 00000'){
@@ -66,7 +64,6 @@ pipeline {
             }
         }
      }
-     */
      stage('CS-Studio CE 00300 - cs-studio-thirdparty'){
         steps{
           dir("cs-studio-thirdparty"){
