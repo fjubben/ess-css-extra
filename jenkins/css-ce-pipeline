@@ -46,14 +46,14 @@ pipeline {
     }
     stage('workspace-prep 00000'){
          steps{
-          sh '''
+          sh """
           if [[ -d /${env.WORKSPACE}/${env.buildPath} ]]; then
             rm -fr /${env.WORKSPACE}/${env.buildPath}/*;
             rm -fr /${env.WORKSPACE}/${env.buildPath}/.git;
             rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.csstudio.*;
             rm -rf /${env.WORKSPACE}/${env.buildPath}/.m2/p2/osgi/bundle/org.diirt.*;
           else mkdir -pv /${env.WORKSPACE}/${env.buildPath};
-          fi'''.stripIndent().trim()
+          fi""".stripIndent().trim()
          }
     }
     stage('clone css-extra 00100'){
@@ -103,6 +103,22 @@ pipeline {
         steps{
           dir("org.csstudio.display.builder"){
             git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: 'master')
+            sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify'''.stripIndent()
+          }
+        }
+     }
+     stage('CS-Studio CE 00550 - org.csstudio.display.builder'){
+        steps{
+          dir("org.csstudio.display.builder"){
+            git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: 'master')
+            sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify'''.stripIndent()
+          }
+        }
+     }
+     stage('CS-Studio CE 00600 - org.csstudio.product'){
+        steps{
+          dir("org.csstudio.product"){
+            git(url: 'https://github.com/kasemir/org.csstudio.product.git', branch: 'master')
             sh '''mvn $MVNOPT --settings ../ess-css-extra/maven/settings-for-jenkins-original.xml -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify'''.stripIndent()
           }
         }
