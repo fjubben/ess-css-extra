@@ -43,7 +43,7 @@ pipeline {
            echo "${env.WORKSPACE}"
            pwd()
 
-           sh script: 'export MAVEN_OPTS=\'-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
+           sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\"'
 
            sh script: 'export howtoexport=\'way1\''
            sh script: "export howtoexport='way2'"
@@ -51,7 +51,7 @@ pipeline {
 
            deleteDir()
            pwd()
-           dir("../${buildPath}"){
+           dir(".."){
            deleteDir()
            }
          }
