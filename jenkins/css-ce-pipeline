@@ -22,7 +22,7 @@ pipeline {
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
     MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
-    
+
 
   }
 
@@ -39,7 +39,7 @@ pipeline {
          steps{
 
            echo '${env.NODE_NAME}'
-           sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit'\"'
+           sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\"'
            stash 'ess-extra'
            deleteDir()
          }
