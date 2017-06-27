@@ -34,7 +34,7 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           echo """\
+           echo """
                  buildPath = ${env.buildPath}
                  sourceRepo = ${env.sourceRepo}
                  mvnXML = ${env.mvnXML}
