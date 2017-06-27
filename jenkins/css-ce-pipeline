@@ -36,7 +36,7 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-         stash(name: 'ess-extra' )
+         stash 'ess-extra'
          deletedir()
          dir('newworkspace')
          sh 'cd newworkspace'
@@ -46,7 +46,7 @@ pipeline {
     stage('clone css-extra 00100'){
        steps {
           dir("ess-css-extra"){
-            unstash
+            unstash 'ess-extra'
             //git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
           }
        }
