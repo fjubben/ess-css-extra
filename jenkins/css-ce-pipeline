@@ -21,8 +21,8 @@ pipeline {
     mvnXML = 'settings-for-jenkins-ca.xml'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
-    MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
-    MAVEN_OPTS='
+    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    
 
   }
 
@@ -37,8 +37,8 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           echo 'env.NODE_NAME'
-            echo 'env.NODE_NAME'
+
+           echo '${env.NODE_NAME}'
            sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit'\"'
            stash 'ess-extra'
            deleteDir()
