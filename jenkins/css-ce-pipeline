@@ -39,7 +39,6 @@ pipeline {
          stash 'ess-extra'
          deleteDir()
          dir('newworkspace')
-         sh 'cd newworkspace'
          }
 
     }
