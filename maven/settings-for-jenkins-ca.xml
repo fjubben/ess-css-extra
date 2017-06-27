@@ -6,7 +6,7 @@
       relative paths
       -->
     <!-- /home/jenkins/workspace/Original-CS-Studio/.m2 -->
-    /home/jenkins/workspace/Original-CS-Studio/.m2
+    ../.m2
   </localRepository>
 
   <profiles>
@@ -20,7 +20,7 @@
              local repositories.
            -->
            <!-- Path to your composite repo -->
-           <csstudio.composite.repo>/home/jenkins/workspace/Original-CS-Studio/ess-css-extra/ess_css_comp_repo</csstudio.composite.repo>
+           <csstudio.composite.repo>../ess-css-extra/ess_css_comp_repo</csstudio.composite.repo>
 
         <!-- By default, even if you use a composite repo
              that lists local P2 sites,

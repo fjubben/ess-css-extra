@@ -34,6 +34,7 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
+
            echo "${env.NODE_NAME}"
            echo "${env.WORKSPACE}"
            pwd()
@@ -44,7 +45,7 @@ pipeline {
     }
     stage('clone css-extra 00100'){
        steps {
-          dir("ess-css-extra"){
+          dir("../${buildPath}/ess-css-extra"){
             pwd()
             //unstash 'ess-extra'
             git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
@@ -53,7 +54,7 @@ pipeline {
      }
      stage('maven-osgi-bundle'){
         steps {
-            dir("maven-osgi-bundle"){
+            dir("../${buildPath}/maven-osgi-bundle"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
@@ -62,7 +63,7 @@ pipeline {
      }
      stage('CS-Studio CE 00300 - cs-studio-thirdparty'){
         steps{
-          dir("cs-studio-thirdparty"){
+          dir("../${buildPath}/cs-studio-thirdparty"){
             git(url: 'https://github.com/ControlSystemStudio/cs-studio-thirdparty.git', branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
@@ -70,7 +71,7 @@ pipeline {
      }
      stage('CS-Studio CE 00400 - diirt'){
         steps{
-          dir("diirt"){
+          dir("../${buildPath}/diirt"){
             git(url: 'https://github.com/ControlSystemStudio/diirt.git', branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
