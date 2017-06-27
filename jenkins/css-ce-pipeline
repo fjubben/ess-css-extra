@@ -38,7 +38,7 @@ pipeline {
     stage('workspace-prep 00000, clean up'){
          steps{
            echo "${env.NODE_NAME}"
-           sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\"'
+           sh script: 'export MAVEN_OPTS=\-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
            stash 'ess-extra'
            deleteDir()
          }
