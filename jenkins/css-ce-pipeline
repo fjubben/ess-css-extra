@@ -2,6 +2,19 @@
 import java.io.*
 
 pipeline {
+
+
+  /*
+   * Environment sets up a map containing key : value pairs
+   */
+  environment {
+    buildPath = 'css-ca'
+    sourceRepo = 'https://github.com/ControlSystemStudio'
+    mvnXML = 'settings-for-jenkins-ca.xml'
+    branchext = 'master'
+    email = 'claudio.rosati@esss.se'
+    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+  }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
    * Can be specified to label of certain slave set up a docker container
@@ -9,22 +22,10 @@ pipeline {
   agent {
     node {
       label 'css'
+      customWorkspace = "../${buildPath}"
     }
   }
 
-  /*
-   * Environment sets up a map containing key : value pairs
-   */
-  environment {
-    buildPath = '.'
-    sourceRepo = 'https://github.com/ControlSystemStudio'
-    mvnXML = 'settings-for-jenkins-ca.xml'
-    branchext = 'master'
-    email = 'claudio.rosati@esss.se'
-    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
-
-
-  }
 
   options {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
@@ -32,14 +33,14 @@ pipeline {
     timestamps()
 
   }
-  triggers { cron('H 3-7 * * *') }
 
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
            echo "${env.NODE_NAME}"
+           echo "${env.WORKSPACE}"
+           pwd()
            sh script: 'export MAVEN_OPTS=\'-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
-           //stash 'ess-extra'
           // deleteDir()
          }
 
@@ -49,16 +50,16 @@ pipeline {
           dir("ess-css-extra"){
             pwd()
             //unstash 'ess-extra'
-            //git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
+            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
           }
        }
      }
      stage('maven-osgi-bundle'){
         steps {
             dir("maven-osgi-bundle"){
-              //git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
+              git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
-              //sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
+              sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }
      }
