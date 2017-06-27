@@ -22,7 +22,7 @@ pipeline {
   agent {
     node {
       label 'css'
-      customWorkspace "../${buildPath}"
+      customWorkspace "../${env.buildPath}"
     }
   }
 
