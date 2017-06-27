@@ -34,18 +34,18 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           echo """
-                 buildPath = ${env.buildPath}
-                 sourceRepo = ${env.sourceRepo}
-                 mvnXML = ${env.mvnXML}
-                 branch = ${env.branch}
-                 email = ${env.email}
-                 MVNOPT=${env.MVNOPT}".stripIndent()
+           echo "buildPath = ${env.buildPath} \n sourceRepo = ${env.sourceRepo}""
+           echo "mvnXML = ${env.mvnXML}"
+           echo "branch = ${env.branch}"
+           echo "email = ${env.email}"
+           echo "MVNOPT=${env.MVNOPT}"
            echo "${env.NODE_NAME}"
            echo "${env.WORKSPACE}"
            pwd()
+
            sh script: 'export MAVEN_OPTS=\'-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
            deleteDir()
+
            dir("../${buildPath}"){
            deleteDir()
            }
