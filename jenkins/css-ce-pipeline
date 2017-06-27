@@ -39,8 +39,9 @@ pipeline {
          stash(name: 'jenkfldr', './jenkins/*' )
          deletedir()
          unstash 'jenkfldr'
-         dir('newworkspace')
+         dir('newworkspace'){}ß
          sh 'cd newworkspace'
+         }
 
     }
     stage('clone css-extra 00100'){
