@@ -60,9 +60,9 @@ pipeline {
           }
        }
      }
-     stage('maven-osgi-bundle's){
+     stage('maven-osgi-bundles'){
         steps {
-            dir("../${buildPath}/maven-osgi-bundle"){
+            dir("../${buildPath}/maven-osgi-bundles"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
@@ -87,7 +87,7 @@ pipeline {
      }
      stage('CS-Studio CE 00500 - cs-studio'){
      steps{
-          dir("cs-studio"){
+          dir("../${buildPath}/cs-studio"){
             git(url: 'https://github.com/ControlSystemStudio/cs-studio.git', branch: 'master')
             sh "cd core; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
             sh "cd application; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
@@ -97,7 +97,7 @@ pipeline {
 
      stage('CS-Studio CE 00550 - org.csstudio.display.builder'){
         steps{
-          dir("org.csstudio.display.builder"){
+          dir("../${buildPath}/org.csstudio.display.builder"){
             git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} -Dcss_repo=file:${env.WORKSPACE}/../${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify".stripIndent()
           }
@@ -106,7 +106,7 @@ pipeline {
      stage('CS-Studio CE 00600 - org.csstudio.product'){
         steps{
           dir("org.csstudio.product"){
-            git(url: 'https://github.com/kasemir/org.csstudio.product.git', branch: 'master')
+            git(url: 'https://github.com/ControlSystemStudio/org.csstudio.product.git, branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
