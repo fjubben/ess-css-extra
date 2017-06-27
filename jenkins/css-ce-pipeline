@@ -44,15 +44,13 @@ pipeline {
            pwd()
 
            sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\"'
+           sh script: 'export HELLO=\"YEEs\"'
 
-           sh script: 'export howtoexport=\'way1\''
-           sh script: "export howtoexport='way2'"
-           sh script: 'export howtoexport=way3'
 
            deleteDir()
            pwd()
            dir(".."){
-           sh "sudo rm -rf ${buildPath}/"
+           sh "rm -rf ${buildPath}/"
            }
          }
 
