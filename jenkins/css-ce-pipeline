@@ -39,7 +39,7 @@ pipeline {
          stash(name: 'jenkfldr', includes: './jenkins/*' )
          deletedir()
          unstash 'jenkfldr'
-         dir('newworkspace'){}ß
+         dir('newworkspace')
          sh 'cd newworkspace'
          }
 
