@@ -52,7 +52,7 @@ pipeline {
            deleteDir()
            pwd()
            dir(".."){
-           deleteDir()
+           sh "rm -rf ${buildPath}"
            }
          }
 
