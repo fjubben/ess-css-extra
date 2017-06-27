@@ -21,7 +21,7 @@ pipeline {
     mvnXML = 'settings-for-jenkins-ca.xml'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
-    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
 
   }
 
@@ -36,8 +36,9 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-         stash 'ess-extra'
-         deleteDir()
+           sh 'declare -x MAVEN_OPTS='-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit''
+           stash 'ess-extra'
+           deleteDir()
          }
 
     }
@@ -45,7 +46,7 @@ pipeline {
        steps {
           dir("ess-css-extra"){
             unstash 'ess-extra'
-            //git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
+            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
           }
        }
      }
@@ -53,12 +54,14 @@ pipeline {
         steps {
             dir("maven-osgi-bundle"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
+              pwd
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }
      }
      stage('CS-Studio CE 00300 - cs-studio-thirdparty'){
         steps{
+
           dir("cs-studio-thirdparty"){
             git(url: 'https://github.com/ControlSystemStudio/cs-studio-thirdparty.git', branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
