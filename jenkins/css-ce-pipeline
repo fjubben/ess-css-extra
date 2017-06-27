@@ -47,7 +47,8 @@ pipeline {
     stage('clone css-extra 00100'){
        steps {
           dir("ess-css-extra"){
-            unstash 'ess-extra'
+            pwd()
+            //unstash 'ess-extra'
             //git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
           }
        }
