@@ -27,4 +27,6 @@ The different versions job sets do mainly the same thing baring some initial and
 ## Useful tips
 use triple ' (''') to bypass groovys templating which can give you trouble sometimes.
 
-substitution (using $variable) requires explicit string string sign ("") 
+substitution (using $variable) requires explicit string string sign ("")
+
+the "steps" are ran on the slave, other is ran on the master 

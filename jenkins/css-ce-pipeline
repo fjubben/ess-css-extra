@@ -2,8 +2,6 @@
 import java.io.*
 
 pipeline {
-
-
   /*
    * Environment sets up a map containing key : value pairs
    */
@@ -22,8 +20,6 @@ pipeline {
   agent {
     node {
       label 'css'
-      sh "mkdir ../${env.buildPath}"
-      customWorkspace "../${env.buildPath}"
     }
   }
 
