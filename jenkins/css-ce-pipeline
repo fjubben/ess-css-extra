@@ -18,7 +18,7 @@ pipeline {
   environment {
     buildPath = '.'
     sourceRepo = 'https://github.com/ControlSystemStudio'
-    mvnXML = 'settings-for-jenkins-ca.xml'
+    mvnXML = 'settings.xml'
     branchext = 'master'
     email = 'claudio.rosati@esss.se'
     MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
@@ -49,7 +49,7 @@ pipeline {
        steps {
           dir("ess-css-extra"){
             unstash 'ess-extra'
-            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
+            //git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
           }
        }
      }
