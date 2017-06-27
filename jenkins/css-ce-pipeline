@@ -37,7 +37,9 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           sh script: "declare -x MAVEN_OPTS=\"${env.MAVEN_OPTS}\""
+           echo 'env.NODE_NAME'
+            echo 'env.NODE_NAME'
+           sh script: "export MAVEN_OPTS=\"${env.MAVEN_OPTS}\""
            stash 'ess-extra'
            deleteDir()
          }
