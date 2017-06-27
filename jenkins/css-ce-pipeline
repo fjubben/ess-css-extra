@@ -47,11 +47,10 @@ pipeline {
            sh script: 'export HELLO=\"YEEs\"'
 
 
-           deleteDir()
+           sh "jenkins/clean.sh ${env.buildPath}"
            pwd()
-           dir(".."){
-           sh "rm -rf ${buildPath}/"
-           }
+
+           deleteDir()
          }
 
     }

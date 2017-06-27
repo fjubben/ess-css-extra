@@ -1,1 +1,2 @@
-rm -rf ../../css-ce
+#!/usr/bin/bash
+rm -rf ../../$1
