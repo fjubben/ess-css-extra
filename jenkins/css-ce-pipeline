@@ -9,7 +9,7 @@ pipeline {
     buildPath = 'css-ce'
     sourceRepo = 'https://github.com/ControlSystemStudio'
     mvnXML = 'settings-for-jenkins-ce.xml'
-    branchext = 'master'
+    branch = 'master'
     email = 'claudio.rosati@esss.se'
     MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
@@ -60,7 +60,7 @@ pipeline {
           }
        }
      }
-     stage('maven-osgi-bundle'){
+     stage('maven-osgi-bundle's){
         steps {
             dir("../${buildPath}/maven-osgi-bundle"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
@@ -99,7 +99,7 @@ pipeline {
         steps{
           dir("org.csstudio.display.builder"){
             git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: 'master')
-            sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify".stripIndent()
+            sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} -Dcss_repo=file:${env.WORKSPACE}/../${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify".stripIndent()
           }
         }
      }
