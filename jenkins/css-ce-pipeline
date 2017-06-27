@@ -46,7 +46,7 @@ pipeline {
            sh script: 'export MAVEN_OPTS=\'-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
 
            sh script: 'export howtoexport=\'way1\''
-           sh script: '''export howtoexport='way2''''
+           sh script: "export howtoexport='way2'"
            sh script: 'export howtoexport=way3'
 
            deleteDir()
@@ -85,7 +85,7 @@ pipeline {
      stage('CS-Studio CE 00400 - diirt'){
         steps{
           dir("../${buildPath}/diirt"){
-            git(url: "${sourceRepo}diirt.git", branch: 'master')
+            git(url: "${sourceRepo}/diirt.git", branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
@@ -93,7 +93,7 @@ pipeline {
      stage('CS-Studio CE 00500 - cs-studio'){
      steps{
           dir("../${buildPath}/cs-studio"){
-            git(url: 'https://github.com/ControlSystemStudio/cs-studio.git', branch: 'master')
+            git(url: "${sourceRepo}/cs-studio.git", branch: 'master')
             sh "cd core; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
             sh "cd application; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
           }
@@ -111,7 +111,7 @@ pipeline {
      stage('CS-Studio CE 00600 - org.csstudio.product'){
         steps{
           dir("org.csstudio.product"){
-            git(url: 'https://github.com/ControlSystemStudio/org.csstudio.product.git, branch: 'master')
+            git(url: "${sourceRepo}/org.csstudio.product.git", branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
@@ -119,7 +119,7 @@ pipeline {
      stage('CS-Studio CE 00700 - org.csstudio.ess.product'){
         steps{
           dir("org.csstudio.ess.product"){
-            git(url: 'https://github.com/ControlSystemStudio/org.csstudio.ess.product.git', branch: 'master')
+            git(url: "${sourceRepo}/org.csstudio.ess.product.git", branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
