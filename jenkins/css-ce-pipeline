@@ -38,7 +38,6 @@ pipeline {
          steps{
          stash 'ess-extra'
          deleteDir()
-         dir('newworkspace')
          }
 
     }
