@@ -46,7 +46,7 @@ pipeline {
            pwd()
            sh script: 'export MAVEN_OPTS=\'-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
            deleteDir()
-           dir("../${buildPath"}){
+           dir("../${buildPath}""){
            deleteDir()
            }
          }
