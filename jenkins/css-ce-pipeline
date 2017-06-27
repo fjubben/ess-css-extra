@@ -38,9 +38,9 @@ pipeline {
     stage('workspace-prep 00000, clean up'){
          steps{
            echo "${env.NODE_NAME}"
-           sh script: 'export MAVEN_OPTS=\-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
-           stash 'ess-extra'
-           deleteDir()
+           sh script: 'export MAVEN_OPTS=\'-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\''
+           //stash 'ess-extra'
+          // deleteDir()
          }
 
     }
@@ -55,9 +55,9 @@ pipeline {
      stage('maven-osgi-bundle'){
         steps {
             dir("maven-osgi-bundle"){
-              git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
+              //git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
-              sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
+              //sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }
      }
