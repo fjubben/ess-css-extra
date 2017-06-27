@@ -37,7 +37,7 @@ pipeline {
     stage('workspace-prep 00000, clean up'){
          steps{
          stash 'ess-extra'
-         deletedir()
+         deleteDir()
          dir('newworkspace')
          sh 'cd newworkspace'
          }
