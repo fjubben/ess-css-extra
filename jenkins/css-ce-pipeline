@@ -6,7 +6,7 @@ pipeline {
    * Environment sets up a map containing key : value pairs
    */
   environment {
-    buildPath = 'css-ca'
+    buildPath = 'css-ce'
     sourceRepo = 'https://github.com/ControlSystemStudio'
     mvnXML = 'settings-for-jenkins-ca.xml'
     branchext = 'master'
