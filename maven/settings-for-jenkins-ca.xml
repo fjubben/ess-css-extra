@@ -6,7 +6,7 @@
       relative paths
       -->
     <!-- /home/jenkins/workspace/Original-CS-Studio/.m2 -->
-    .m2
+    /home/jenkins/workspace/css-ce/.m2
   </localRepository>
 
   <profiles>
