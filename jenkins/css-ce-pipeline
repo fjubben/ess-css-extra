@@ -50,7 +50,7 @@ pipeline {
            sh script: 'export howtoexport=way3'
 
            deleteDir()
-
+           pwd()
            dir("../${buildPath}"){
            deleteDir()
            }
