@@ -52,7 +52,7 @@ pipeline {
            deleteDir()
            pwd()
            dir(".."){
-           sh "rm -rf ${buildPath}"
+           sh "sudo rm -rf ${buildPath}/"
            }
          }
 
