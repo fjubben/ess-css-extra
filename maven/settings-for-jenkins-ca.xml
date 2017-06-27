@@ -2,6 +2,10 @@
 <settings>
 
   <localRepository>
+     <!-- TODO: JO:
+      relative paths
+      -->
+    <!-- /home/jenkins/workspace/Original-CS-Studio/.m2 -->
     /home/jenkins/workspace/Original-CS-Studio/.m2
   </localRepository>
 
