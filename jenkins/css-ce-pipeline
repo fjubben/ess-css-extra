@@ -55,7 +55,7 @@ pipeline {
         steps {
             dir("maven-osgi-bundle"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
-              pwd
+              pwd()
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }
