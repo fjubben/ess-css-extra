@@ -11,7 +11,7 @@ pipeline {
     mvnXML = 'settings-for-jenkins-ce.xml'
     branch = 'master'
     email = 'claudio.rosati@esss.se'
-    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    MVNOPT="-X -e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
@@ -66,6 +66,7 @@ pipeline {
             dir("${buildPath}/maven-osgi-bundles"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
+              sh "export"
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }
@@ -89,6 +90,7 @@ pipeline {
      stage('CS-Studio CE 00500 - cs-studio'){
      steps{
           dir("${buildPath}/cs-studio"){
+            sh "export"
             git(url: "${sourceRepo}/cs-studio.git", branch: 'master')
             sh "cd core; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
             sh "cd application; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
