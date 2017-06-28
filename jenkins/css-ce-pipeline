@@ -80,7 +80,14 @@ pipeline {
           dir("${buildPath}/diirt"){
             git(url: "${sourceRepo}/diirt", branch: 'master')
             //git(url: "https://github.com/diirt/diirt", branch: 'master')
-            sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
+            script() {
+              try {
+                sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
+              }catch(InterruptedException e){
+                assert true
+              }
+            }
+
           }
         }
      }
