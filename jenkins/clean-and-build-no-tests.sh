@@ -14,7 +14,7 @@ START=$(date +%s)
 # rm -rf $HOME/.m2/repository/p2/bundle/osgi/org.csstudio.*
 # rm -rf $HOME/.m2/repository/p2/bundle/osgi/org.diirt.*
 rm -f ?_*.log
-
+#
 # To reduce maven verbosity
 # MAVEN_OPTS = $MAVEN_OPTS -Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn
 # MVNOPT="-P !cs-studio-sites,!eclipse-sites -B -DlocalArtifacts=ignore"
