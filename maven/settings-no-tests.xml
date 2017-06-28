@@ -1,7 +1,7 @@
 <!-- Maven settings.xml -->
 <settings>
   <localRepository>
-    /home/jenkins/workspace/Original-CS-Studio/css-manual/.m2
+    /home/jenkins/workspace/css-manual/.m2
   </localRepository> -->
   <profiles>
     <profile>
