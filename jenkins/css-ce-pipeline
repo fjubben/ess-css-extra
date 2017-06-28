@@ -10,6 +10,7 @@ pipeline {
     sourceRepo = 'https://github.com/ControlSystemStudio'
     mvnXML = 'settings-for-jenkins-ce.xml'
     branch = 'master'
+    MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
     email = 'claudio.rosati@esss.se'
     MVNOPT="-X -e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
@@ -42,9 +43,6 @@ pipeline {
            echo "${env.NODE_NAME}"
            echo "${env.WORKSPACE}"
            pwd()
-
-           sh script: 'export MAVEN_OPTS=\"-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit\"'
-           sh script: 'export HELLO=\'YEEs\''
 
 
            pwd()
