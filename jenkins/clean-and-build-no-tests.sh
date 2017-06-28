@@ -63,13 +63,16 @@ echo ""
 echo "===="
 echo "==== BUILDING org.csstudio.product"
 echo "===="
+pwd >> 6_org.csstudio.product.log
 (cd org.csstudio.product; time mvn $MVNOPT --settings ../ess-css-extra/maven/settings-no-tests.xml clean verify) | tee 6_org.csstudio.product.log
 cd ..
 echo ""
 echo "===="
 echo "==== BUILDING org.csstudio.ess.product"
 echo "===="
+pwd >> 7_org.csstudio.ess.product.log
 (cd org.csstudio.ess.product; time mvn $MVNOPT --settings ../ess-css-extra/maven/settings-no-tests.xml clean verify) | tee 7_org.csstudio.ess.product.log
+
 cd ..
 echo ""
 tail ?_*.log
