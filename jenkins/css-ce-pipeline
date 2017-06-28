@@ -78,7 +78,8 @@ pipeline {
      stage('CS-Studio CE 00400 - diirt'){
         steps{
           dir("${buildPath}/diirt"){
-            git(url: "https://github.com/diirt/diirt", branch: 'master')
+            git(url: "${sourceRepo}/diirt", branch: 'master')
+            //git(url: "https://github.com/diirt/diirt", branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
           }
         }
