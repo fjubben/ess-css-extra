@@ -1,10 +1,8 @@
 <!-- Maven settings.xml -->
 <settings>
-
   <localRepository>
     /home/jenkins/workspace/Original-CS-Studio/css-ce/.m2
   </localRepository>
-
   <profiles>
     <profile>
       <id>ess-css-settings</id>
