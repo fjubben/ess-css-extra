@@ -4,6 +4,8 @@ import java.io.*
 pipeline {
   /*
    * Environment sets up a map containing key : value pairs
+   * The variables will be exported to the shell jenkins uses to execute in
+   *
    */
   environment {
     buildPath = 'css-ce'
@@ -42,11 +44,8 @@ pipeline {
            echo "MVNOPT=${env.MVNOPT}"
            echo "${env.NODE_NAME}"
            echo "${env.WORKSPACE}"
+           sh "export"
            pwd()
-
-
-           pwd()
-
            deleteDir()
          }
 
@@ -64,7 +63,6 @@ pipeline {
             dir("${buildPath}/maven-osgi-bundles"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
-              sh "export"
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${mvnXML} clean verify"
             }
         }

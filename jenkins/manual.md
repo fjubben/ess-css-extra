@@ -29,4 +29,6 @@ use triple ' (''') to bypass groovys templating which can give you trouble somet
 
 substitution (using $variable) requires explicit string string sign ("")
 
-the "steps" are ran on the slave, other is ran on the master 
+the "steps" are ran on the slave, other is ran on the master
+
+ 

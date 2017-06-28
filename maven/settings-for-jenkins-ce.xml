@@ -1,13 +1,13 @@
 <!-- Maven settings.xml -->
 <settings>
-
+<!--
   <localRepository>
      <!-- TODO: JO:
       relative paths
       -->
     <!-- /home/jenkins/workspace/Original-CS-Studio/.m2 -->
     /home/jenkins/workspace/Original-CS-Studio/css-ce/.m2
-  </localRepository>
+  </localRepository> -->
 
   <profiles>
     <profile>
