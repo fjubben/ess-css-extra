@@ -84,9 +84,8 @@ pipeline {
         }
      }
      stage('CS-Studio CE 00500 - cs-studio'){
-     steps{
+      steps{
           dir("${buildPath}/cs-studio"){
-            sh "export"
             git(url: "${sourceRepo}/cs-studio.git", branch: 'master')
             sh "cd core; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
             sh "cd application; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${mvnXML} clean verify"
