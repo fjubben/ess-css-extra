@@ -118,7 +118,7 @@ pipeline {
      }
      stage('CS-Studio CE 00700 - org.csstudio.ess.product'){
         steps{
-          dir("org.csstudio.ess.product"){
+          dir("${buildPath}/org.csstudio.ess.product"){
             git(url: "${sourceRepo}/org.csstudio.ess.product.git", branch: 'master')
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
           }
