@@ -16,10 +16,6 @@ pipeline {
     email = 'claudio.rosati@esss.se'
     MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
-  tools {
-    Maven "Maven 3.5.0"
-    jdk "Oracle JDK 8u121"
-  }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
    * Can be specified to label of certain slave or spin up a docker container
@@ -56,7 +52,7 @@ pipeline {
           dir("${buildPath}/ess-css-extra"){
             pwd() //sh "pwd"
 
-            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest') // checks out the repo in current folder (does not clone in to subfolder), specify branch 
+            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest') // checks out the repo in current folder (does not clone in to subfolder), specify branch
           }
        }
      }
