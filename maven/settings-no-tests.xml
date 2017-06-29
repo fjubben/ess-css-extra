@@ -27,7 +27,7 @@
              you can list them in your composite repo.
            -->
            <cs-studio>true</cs-studio>
-           <eclipse>true</eclipse>
+           <eclipse>false</eclipse>
 
            <!-- Ignore artifacts in ~/.m2/repository/p2,
              which some other "mvn install" may have placed
