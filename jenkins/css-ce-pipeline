@@ -28,7 +28,7 @@ pipeline {
 
 
   options {
-  disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
+    disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     //timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
     timestamps()
 
