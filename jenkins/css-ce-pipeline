@@ -78,7 +78,7 @@ pipeline {
         steps{
             dir("${buildPath}/diirt"){
             git(url: "${sourceRepo}/diirt", branch: 'master')
-            sh "mvn -X ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
+            sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
           }
         }
      }
@@ -86,8 +86,8 @@ pipeline {
       steps{
           dir("${buildPath}/cs-studio"){
             git(url: "${sourceRepo}/cs-studio", branch: 'master')
-            sh "(cd core; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify)"
-            sh "(cd application; mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify)"
+            sh "(cd core; mvn -X ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify)"
+            sh "(cd application; mvn -X ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify)"
           }
         }
      }

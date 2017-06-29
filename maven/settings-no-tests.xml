@@ -2,7 +2,7 @@
 <settings>
   <localRepository>
     /home/jenkins/workspace/css-manual/.m2
-  </localRepository> -->
+  </localRepository>
   <profiles>
     <profile>
       <id>ess-css-settings</id>
