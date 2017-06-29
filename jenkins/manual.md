@@ -31,4 +31,4 @@ substitution (using $variable) requires explicit string string sign ("")
 
 the "steps" are ran on the slave, other is ran on the master
 
- 
+variables declared in the "environment"-block are accessible from the slave as exported variables
