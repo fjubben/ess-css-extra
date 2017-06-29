@@ -20,8 +20,9 @@ pipeline {
    * Agent sets up which environment that the pipeline will execute inside.
    * Can be specified to label of certain slave or spin up a docker container
    */
-  agent label: 'css'
-
+  agent {
+    label 'css'
+  }
 
   options {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
