@@ -14,7 +14,7 @@ pipeline {
     branch = 'master'
     MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
     email = 'claudio.rosati@esss.se'
-    MVNOPT="-X -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    MVNOPT="-e -X -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
