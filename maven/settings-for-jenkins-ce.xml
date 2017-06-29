@@ -26,8 +26,8 @@
              http://download.controlsystemstudio.org,
              you can list them in your composite repo.
            -->
-           <cs-studio>true</cs-studio>
-           <eclipse>true</eclipse>
+           <cs-studio>fals</cs-studio>
+           <eclipse>false</eclipse>
 
         <!-- Ignore artifacts in ~/.m2/repository/p2,
              which some other "mvn install" may have placed
@@ -43,8 +43,9 @@
            <!-- <maven.compiler.fork>true</maven.compiler.fork> -->
 
            <!-- Skip unit tests -->
-           <maven.test.skip>false</maven.test.skip>
-           <skipTests>false</skipTests>
+           <!-- TODO: JO: set back to false -->
+           <maven.test.skip>true</maven.test.skip>
+           <skipTests>true</skipTests>
 
          </properties>
        </profile>

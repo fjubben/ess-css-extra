@@ -14,7 +14,7 @@ pipeline {
     branch = 'master'
     MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
     email = 'claudio.rosati@esss.se'
-    MVNOPT="-e -X -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
+    MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
@@ -79,11 +79,7 @@ pipeline {
         steps{
           dir("${buildPath}/diirt"){
             git(url: "${sourceRepo}/diirt", branch: 'master')
-            //git(url: "https://github.com/diirt/diirt", branch: 'master')
-
-                sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
-
-
+            sh "mvn -X ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
           }
         }
      }
