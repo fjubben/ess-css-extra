@@ -16,15 +16,15 @@ pipeline {
     email = 'claudio.rosati@esss.se'
     MVNOPT="-e -B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
   }
+  tools {
+    Maven "Maven 3.5.0"
+    jdk "Oracle JDK 8u121"
+  }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
-   * Can be specified to label of certain slave set up a docker container
+   * Can be specified to label of certain slave or spin up a docker container
    */
-  agent {
-    node {
-      label 'css'
-    }
-  }
+  agent label: 'css'
 
 
   options {
@@ -46,15 +46,17 @@ pipeline {
            echo "${env.WORKSPACE}"
            sh "export"
            pwd()
-           deleteDir()
+           deleteDir() // rm -rf *
          }
 
     }
     stage('clone css-extra 00100'){
        steps {
+       //creates a new directory, {workspace}/<dirName>, everything inside this block will be run with the new folder as root
           dir("${buildPath}/ess-css-extra"){
-            pwd()
-            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
+            pwd() //sh "pwd"
+
+            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest') // checks out the repo in current folder (does not clone in to subfolder), specify branch 
           }
        }
      }
