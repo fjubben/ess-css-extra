@@ -51,11 +51,11 @@ pipeline {
        steps {
        //creates a new directory, {workspace}/<dirName>, everything inside this block will be run with the new folder as root
           dir("${buildPath}/ess-css-extra"){
-            pwd() //sh "pwd"
+            sh 'pwd'
 
             git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest') // checks out the repo in current folder (does not clone in to subfolder), specify branch
           }
-            pwd()
+            sh 'pwd'
        }
      }
      stage('maven-osgi-bundles'){
@@ -88,12 +88,12 @@ pipeline {
           dir("${buildPath}/cs-studio"){
             git(url: "${sourceRepo}/cs-studio", branch: 'master')
             dir("core"){
-              pwd()
+              sh 'pwd'
               sh "mvn -X ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify"
             }
-              pwd()
-            dir("application"){
-              pwd()
+              sh 'pwd'
+            dir("applications"){
+              sh 'pwd'
               sh "mvn -X ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify"
             }
           }
