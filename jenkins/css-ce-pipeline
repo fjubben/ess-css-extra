@@ -46,7 +46,7 @@ pipeline {
            echo "${env.WORKSPACE}"
            sh "export"
            pwd()
-        //   deleteDir()
+           deleteDir()
          }
 
     }
@@ -54,32 +54,32 @@ pipeline {
        steps {
           dir("${buildPath}/ess-css-extra"){
             pwd()
-        //    git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
+            git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest')
           }
        }
      }
      stage('maven-osgi-bundles'){
-        steps {
-            dir("${buildPath}/maven-osgi-bundles"){
-            //  git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
+         steps {
+           dir("${buildPath}/maven-osgi-bundles"){
+              git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: 'master')
               pwd()
-          //    sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
-            }
+              sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
+          }
         }
      }
      stage('CS-Studio CE 00300 - cs-studio-thirdparty'){
-        steps{
-          dir("${buildPath}/cs-studio-thirdparty"){
-      //      git(url: "${sourceRepo}/cs-studio-thirdparty.git", branch: 'master')
-        //    sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
-          }
+         steps{
+           dir("${buildPath}/cs-studio-thirdparty"){
+              git(url: "${sourceRepo}/cs-studio-thirdparty.git", branch: 'master')
+              sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
+            }
         }
      }
      stage('CS-Studio CE 00400 - diirt'){
         steps{
-          dir("${buildPath}/diirt"){
-        //    git(url: "${sourceRepo}/diirt", branch: 'master')
-          //  sh "mvn -X ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
+            dir("${buildPath}/diirt"){
+            git(url: "${sourceRepo}/diirt", branch: 'master')
+            sh "mvn -X ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.mvnXML} clean verify"
           }
         }
      }
