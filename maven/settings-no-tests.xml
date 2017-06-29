@@ -26,7 +26,7 @@
              http://download.controlsystemstudio.org,
              you can list them in your composite repo.
            -->
-           <cs-studio>true</cs-studio>
+           <cs-studio>false</cs-studio>
            <eclipse>false</eclipse>
 
            <!-- Ignore artifacts in ~/.m2/repository/p2,
