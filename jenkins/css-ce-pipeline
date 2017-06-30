@@ -6,7 +6,6 @@ pipeline {
    *
    */
   environment {
-    buildPath = 'Original-CS-Studio'
     sourceRepo = 'https://github.com/ControlSystemStudio'
     mvnXML = 'settings-for-jenkins-ce.xml'
     branch = 'master'
@@ -32,7 +31,7 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           echo "buildPath = ${env.buildPath}\ nsourceRepo = ${env.sourceRepo} \nmvnXML = ${env.mvnXML} \nbranch = ${env.branch}"
+           echo "sourceRepo = ${env.sourceRepo} \nmvnXML = ${env.mvnXML} \nbranch = ${env.branch}"
            echo "email = ${env.email} \nMVNOPT=${env.MVNOPT} \nrunning on jenkinslave: ${env.NODE_NAME}"
            echo "${env.WORKSPACE}"
            sh "export"
