@@ -28,7 +28,7 @@ pipeline {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
     timestamps()
-
+    skipDefaultCheckout()
   }
 
   stages {
@@ -52,7 +52,6 @@ pipeline {
        //creates a new directory, {workspace}/<dirName>, everything inside this block will be run with the new folder as root
           dir("${buildPath}/ess-css-extra"){
             sh 'pwd'
-
             git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest') // checks out the repo in current folder (does not clone in to subfolder), specify branch
           }
             sh 'pwd'
