@@ -31,7 +31,7 @@ stages {
   stage('clone css-extra 00100'){
      steps {
       when {validateDeclarativePipeline "jenkins/css-ce-pipeline"}
-      script "jenkins/css-ce-pipeline
+      script "jenkins/css-ce-pipeline"
      }
    }
 
