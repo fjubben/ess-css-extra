@@ -1,6 +1,4 @@
 #!groovy​
-import java.io.*
-
 pipeline {
   /*
    * Environment sets up a map containing key : value pairs
@@ -8,7 +6,7 @@ pipeline {
    *
    */
   environment {
-    buildPath = 'css-ce'
+    buildPath = 'Original-CS-Studio'
     sourceRepo = 'https://github.com/ControlSystemStudio'
     mvnXML = 'settings-for-jenkins-ce.xml'
     branch = 'master'
