@@ -38,6 +38,8 @@ pipeline {
            sh "export"
            pwd()
            deleteDir() // rm -rf *
+           slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", token: 'AKrq2kTrwtgPrgnxe6OFC5Lu', channel: "random", teamDomain: "ess-ics"
+
          }
 
     }
