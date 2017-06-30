@@ -1,8 +1,6 @@
 <!-- Maven settings.xml -->
 <settings>
-  <localRepository>
-    /home/jenkins/workspace/css-manual/.m2
-  </localRepository>
+
   <profiles>
     <profile>
       <id>ess-css-settings</id>
@@ -15,7 +13,7 @@
            -->
            <!-- Path to your composite repo -->
            <!-- <csstudio.composite.repo>/Users/claudiorosati/Projects/GitHub/ess-css-extra/ess_css_comp_repo</csstudio.composite.repo> -->
-           <csstudio.composite.repo>/home/jenkins/workspace/css-manual/ess-css-extra/ess_css_comp_repo</csstudio.composite.repo>
+           <csstudio.composite.repo>/Users/claudiorosati/Projects/GitHub/ess-css-extra/ess_css_comp_repo</csstudio.composite.repo>
            <!-- By default, even if you use a composite repo
              that lists local P2 sites,
              Maven will still consult the remote CSS repos.
