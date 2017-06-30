@@ -17,6 +17,14 @@ The different versions job sets do mainly the same thing baring some initial and
 3.	Choose name and the item type “Pipeline”
 4.	In the menu furthest down called “pipeline” change the definition to “Pipeline script from SCM”
 5.	Paste the url to the repo containing the Jenkinsfile and the path to it from within the repo
+---
+## Adding slack integration
+1. download slack notification plugin for jenkins
+2. go to the slack url <teamname>.slack.com/apps/ and find jenkins integration
+3. press "add configuration" for the channel you want to add the integration to
+4. copy and add the Team domain, token and channel name for the pipeline script
+
+ex            slackSend message: "Build Started", token: 'AKrq2kTrwtrFjepxe6OFC5Lu', channel: "<theChannel>", teamDomain: "teamName"
 
 ---
 
