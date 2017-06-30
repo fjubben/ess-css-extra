@@ -43,7 +43,6 @@
            <!-- <maven.compiler.fork>true</maven.compiler.fork> -->
 
            <!-- Skip unit tests -->
-           <!-- TODO: JO: set back to false -->
            <maven.test.skip>false</maven.test.skip>
            <skipTests>false</skipTests>
 
