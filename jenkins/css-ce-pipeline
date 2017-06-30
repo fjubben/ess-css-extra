@@ -36,7 +36,7 @@ pipeline {
            echo "branch = ${env.branch} \nemail = ${env.email}"
            echo "MVNOPT=${env.MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
            echo "path to workspace: ${env.WORKSPACE}"
-           echo "${artifactOrNot}"
+           echo "${env.artifactOrNot}"
            sh "export"
            pwd()
            deleteDir() // rm -rf *
