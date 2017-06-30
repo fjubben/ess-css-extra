@@ -31,9 +31,10 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           echo "sourceRepo = ${env.sourceRepo} \nmvnXML = ${env.mvnXML} \nbranch = ${env.branch}"
-           echo "email = ${env.email} \nMVNOPT=${env.MVNOPT} \nrunning on jenkinslave: ${env.NODE_NAME}"
-           echo "${env.WORKSPACE}"
+           echo "sourceRepo = ${env.sourceRepo} \nmvnXML = ${env.mvnXML}/
+                  \nbranch = ${env.branch} \nemail = ${env.email}\
+                  \nMVNOPT=${env.MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME} /
+                  \npath to workspace: ${env.WORKSPACE}"
            sh "export"
            pwd()
            deleteDir() // rm -rf *
