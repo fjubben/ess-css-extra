@@ -89,12 +89,12 @@ pipeline {
             git(url: "${sourceRepo}/cs-studio", branch: 'master')
             dir("core"){
               sh 'pwd'
-              sh "mvn -X ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify"
+              sh "mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify"
             }
               sh 'pwd'
             dir("applications"){
               sh 'pwd'
-              sh "mvn -X ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify"
+              sh "mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.mvnXML} clean verify"
             }
           }
         }
