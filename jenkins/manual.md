@@ -14,7 +14,7 @@ The project will be built inside a folder in the slave workspace that has the sa
 3. press "add configuration" for the channel you want to add the integration to
 4. copy and add the Team domain, token and channel name for the pipeline script
 
-ex            slackSend message: "Build Started", token: 'AKrq2kTrwtrFjepxe6OFC5Lu', channel: "<theChannel>", teamDomain: "teamName"
+ex slackSend message: "Build Started", token: 'AKrq2kTrwtrFjepxe6OFC5Lu', channel: "<theChannel>", teamDomain: "teamName"
 
 ---
 

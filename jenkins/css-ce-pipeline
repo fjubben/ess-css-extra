@@ -9,7 +9,6 @@ pipeline {
     sourceRepo = 'https://github.com/ControlSystemStudio'
     mvnXML = 'settings-for-jenkins-ce.xml'
     branch = 'master'
-    ms = credentials('artifact')
     MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
     email = 'claudio.rosati@esss.se'
     MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
@@ -36,7 +35,8 @@ pipeline {
            echo "branch = ${env.branch} \nemail = ${env.email}"
            echo "MVNOPT=${env.MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
            echo "path to workspace: ${env.WORKSPACE}"
-           echo "${env.ms}"
+           echo "job name: env.JOB_NAME"
+           echo "job base name: env.JOB_BASE_NAME"
            sh "export"
            pwd()
            deleteDir() // rm -rf *
@@ -45,14 +45,7 @@ pipeline {
          }
 
     }
-    stage('artifact'){
-      when {
-          environment name: 'ms', value: 'true'
-      }
-      steps {
-          echo 'value is just concealed'
-      }
-    }
+
     stage('clone css-extra 00100'){
        steps {
 
