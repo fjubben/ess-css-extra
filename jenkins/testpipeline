@@ -1,13 +1,12 @@
 pipeline {
-option{skipDefaultCheckout()}
-agent{ label 'css'}
-stages{
-  stage{
-    steps{
-    
+  options{skipDefaultCheckout()}
+  agent{ label 'css'}
+  stages {
+    stage('test environment'){
+      steps{
+        sh "echo ${env.test}"
+        sh 'export'
+      }
     }
   }
-}
-
-
 }
