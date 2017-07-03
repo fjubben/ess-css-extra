@@ -37,7 +37,7 @@ pipeline {
 
            pwd()
            dir(".."){
-             sh "rm -rf ${env.JOB_NAME}
+             sh "rm -rf ${env.JOB_NAME}"
            }
            dir("${NEW_WORKSPACE}"){
              deleteDir() // rm -rf *
