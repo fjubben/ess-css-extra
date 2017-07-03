@@ -4,7 +4,10 @@ pipeline {
   stages {
     stage('test environment'){
       steps{
-        sh '''export myvar2=\"bye\"'''
+        script {
+          def myvar2 = 'helloworld'
+        }
+        sh 'echo ${myvar2}'
         sh 'export'
       }
     }
