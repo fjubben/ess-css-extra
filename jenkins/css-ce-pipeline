@@ -31,14 +31,12 @@ pipeline {
   stages {
     stage('workspace-prep 00000, clean up'){
          steps{
-           test = "lets see"
            echo "sourceRepo = ${env.sourceRepo} \nmvnXML = ${env.mvnXML}"
            echo "branch = ${env.branch} \nemail = ${env.email}"
            echo "MVNOPT=${env.MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
            echo "path to workspace: ${env.WORKSPACE}"
            echo "job name: ${env.JOB_NAME}"
            echo "job base name: ${env.JOB_BASE_NAME}"
-           echo "${env.test}"
            sh "export"
 
            pwd()
