@@ -6,7 +6,7 @@ pipeline {
       steps{
         sh 'echo ${branch}'
         sh 'echo ${pushArtifact}'
-        sh "echo ${branch}"
+        sh "echo ${env.branch}"
         script {
           def myvar2 = 'helloworld'
         }
