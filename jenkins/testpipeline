@@ -1,13 +1,10 @@
 pipeline {
-  environment {
-    myvar1='hey'
-  }
   options{skipDefaultCheckout()}
   agent{ label 'css'}
   stages {
     stage('test environment'){
       steps{
-        sh "export myvar2=\'bye\'"
+        sh '''export myvar2="bye"''
         sh 'export'
       }
     }
