@@ -4,6 +4,9 @@ pipeline {
   stages {
     stage('test environment'){
       steps{
+        sh 'echo ${branch}'
+        sh 'echo ${pushArtifact}'
+        sh "echo ${branch}"
         script {
           def myvar2 = 'helloworld'
         }
