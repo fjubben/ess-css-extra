@@ -15,7 +15,20 @@ The project will be built inside a folder in the slave workspace that has the sa
 4. copy and add the Team domain, token and channel name for the pipeline script
 
 ex slackSend message: "Build Started", token: 'AKrq2kTrwtrFjepxe6OFC5Lu', channel: "<theChannel>", teamDomain: "teamName"
+---
 
+## Jenkinsfile syntax and tips for writing it
+
+[Supported steps (predefined methods) for the jenkins file](https://jenkins.io/doc/pipeline/steps/)
+
+## Useful tips
+use triple ' (''') to bypass groovys templating which can give you trouble sometimes.
+
+substitution (using $variable) requires explicit string sign ("")
+
+the "steps" are ran on the slave, other is ran on the master
+
+variables declared in the "environment"-block are accessible from the slave as exported variables
 ---
 
 ## Problem description
@@ -28,17 +41,3 @@ The pipeline will show up as a job in the Jenkins menu. We want setting up the p
 The different versions job sets do mainly the same thing baring some initial and final steps. We want to bulk the core jobs together in to one pipeline and encapsulate it inside another bigger, version specific pipeline containing parameters for the specific environment and feed them to the core pipeline. Reducing 20+ different scriptfiles down to only 4 with minimal duplication of code.
 
 ---
-
-
-## Jenkinsfile syntax and tips for writing it
-
-[Supported steps (predefined methods) for the jenkins file](https://jenkins.io/doc/pipeline/steps/)
-
-## Useful tips
-use triple ' (''') to bypass groovys templating which can give you trouble sometimes.
-
-substitution (using $variable) requires explicit string string sign ("")
-
-the "steps" are ran on the slave, other is ran on the master
-
-variables declared in the "environment"-block are accessible from the slave as exported variables
