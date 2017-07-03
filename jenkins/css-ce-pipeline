@@ -39,7 +39,7 @@ pipeline {
            dir(".."){
              sh "rm -rf ${env.JOB_NAME}"
            }
-           dir("${NEW_WORKSPACE}"){
+           dir("${buildSpace}"){
              deleteDir() // rm -rf *
            }
            //slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", token: 'AKrq2kTrwtgPrgnxe6OFC5Lu', channel: "random", teamDomain: "ess-ics"
@@ -52,14 +52,14 @@ pipeline {
        steps {
 
        //creates a new directory, {workspace}/<dirName>, everything inside this block will be run with the new folder as root
-          dir("${NEW_WORKSPACE}/ess-css-extra"){
+          dir("../${buildSpace}/ess-css-extra"){
             git(url: 'https://github.com/fjubben/ess-css-extra', branch: 'jespertest') // checks out the repo in current folder (does not clone in to subfolder), specify branch
           }
        }
      }
      stage('maven-osgi-bundles 00200'){
          steps {
-           dir("${NEW_WORKSPACE}/maven-osgi-bundles"){
+           dir("../${buildSpace}/maven-osgi-bundles"){
               git(url: "${sourceRepo}/maven-osgi-bundles.git", branch: "${repoBranch}")
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} clean verify"
           }
@@ -67,7 +67,7 @@ pipeline {
      }
      stage('CS-Studio CE 00300 - cs-studio-thirdparty'){
          steps{
-           dir("${NEW_WORKSPACE}/cs-studio-thirdparty"){
+           dir("../${buildSpace}/cs-studio-thirdparty"){
               git(url: "${sourceRepo}/cs-studio-thirdparty.git", branch: "${repoBranch}")
               sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} clean verify"
             }
@@ -75,7 +75,7 @@ pipeline {
      }
      stage('CS-Studio CE 00400 - diirt'){
         steps{
-            dir("${NEW_WORKSPACE}/diirt"){
+            dir("../${buildSpace}/diirt"){
             git(url: "${sourceRepo}/diirt", branch: "repoBranch")
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} clean verify"
           }
@@ -83,7 +83,7 @@ pipeline {
      }
      stage('CS-Studio CE 00500 - cs-studio'){
       steps{
-          dir("${NEW_WORKSPACE}/cs-studio"){
+          dir("../${buildSpace}/cs-studio"){
             git(url: "${sourceRepo}/cs-studio", branch: "${repoBranch}")
             dir("core"){
               sh "mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/${env.XMLfile} clean verify"
@@ -97,7 +97,7 @@ pipeline {
 
      stage('CS-Studio CE 00550 - org.csstudio.display.builder'){
         steps{
-          dir("${NEW_WORKSPACE}/org.csstudio.display.builder"){
+          dir("../${buildSpace}/org.csstudio.display.builder"){
             git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: "${repoBranch}")
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} -Dcss_repo=file:${env.WORKSPACE}/${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify"
           }
@@ -105,7 +105,7 @@ pipeline {
      }
      stage('CS-Studio CE 00600 - org.csstudio.product'){
         steps{
-          dir("${NEW_WORKSPACE}/org.csstudio.product"){
+          dir("../${buildSpace}/org.csstudio.product"){
             git(url: "${sourceRepo}/org.csstudio.product.git", branch: "${repoBranch}")
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} clean verify"
           }
@@ -113,7 +113,7 @@ pipeline {
      }
      stage('CS-Studio CE 00700 - org.csstudio.ess.product'){
         steps{
-          dir("${NEW_WORKSPACE}/org.csstudio.ess.product"){
+          dir("../${buildSpace}/org.csstudio.ess.product"){
             git(url: "${sourceRepo}/org.csstudio.ess.product.git", branch: "${repoBranch}")
             sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} clean verify"
           }
