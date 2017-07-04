@@ -115,7 +115,7 @@ pipeline {
         steps{
           dir("../${buildSpace}/org.csstudio.display.builder"){
             git(url: 'https://github.com/kasemir/org.csstudio.display.builder.git', branch: "${repoBranch}")
-            sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} -Dcss_repo=file:${env.WORKSPACE}/../${env.buildPath}/ess-css-extra/ess_css_comp_repo clean verify"
+            sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/${env.XMLfile} -Dcss_repo=file:${env.WORKSPACE}/../${env.buildSpace}/ess-css-extra/ess_css_comp_repo clean verify"
           }
         }
      }
