@@ -139,8 +139,8 @@ pipeline {
              def uploadSpec = """{
                "files": [
                  {
-                   "pattern": "../${buildSpace}/**/*.tar.gz",
-                   "pattern": "../${buildSpace}/**/*.zip",
+                   "pattern": "../${buildSpace}/org.csstudio.ess.product/repository/target/products/*.tar.gz",
+                   "pattern": "../${buildSpace}/org.csstudio.ess.product/repository/target/products/*.zip",
                    "target": "CSSTest/${artifactFolder}/0.1"
                  }
                ]
