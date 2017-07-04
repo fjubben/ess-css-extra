@@ -135,7 +135,7 @@ pipeline {
           }
         }
      }
-     stage ('artifact') {
+  /*   stage ('artifact') {
       when {
         environment name: 'pushArtifact', value: 'true'
       }
@@ -143,6 +143,6 @@ pipeline {
       steps{
        echo 'push to artifactory'
       }
-     }
+     }*/
   }
 }
