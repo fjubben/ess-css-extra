@@ -129,14 +129,24 @@ pipeline {
           }
         }
      }
-  /*   stage ('artifact') {
+    stage ('artifact') {
       when {
         environment name: 'pushArtifact', value: 'true'
       }
-      //use artifactory plugin and push some files
       steps{
-       echo 'push to artifactory'
+        script {
+             def server = Artifactory.server ‘artifactory.esss.lu.se’
+             def uploadSpec = """{
+               "files": [
+                 {
+                   "pattern": "../${buildSpace}/**/*.tar.gz",
+                   "target": "CSSTest/${artifactFolder}/ "
+                 }
+               ]
+             }"""
+             server.upload(uploadSpec)
+        }
       }
-     }*/
+    }
   }
 }
