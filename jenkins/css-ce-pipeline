@@ -9,7 +9,6 @@ pipeline {
   environment {
     MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
     MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
-
   }
   /*
    * Agent sets up which environment that the pipeline will execute inside.
@@ -59,11 +58,8 @@ pipeline {
              deleteDir() // rm -rf *
            }
            //slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", token: 'AKrq2kTrwtgPrgnxe6OFC5Lu', channel: "random", teamDomain: "ess-ics"
-
          }
-
     }
-
     stage('clone css-extra 00100'){
        steps {
 
@@ -110,7 +106,6 @@ pipeline {
           }
         }
      }
-
      stage('CS-Studio CE 00550 - org.csstudio.display.builder'){
         steps{
           dir("../${buildSpace}/org.csstudio.display.builder"){

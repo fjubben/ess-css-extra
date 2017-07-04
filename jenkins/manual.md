@@ -6,10 +6,10 @@
 5.	Paste the url to the repo containing the Jenkinsfile and the path to it from within the repo
 ---
 ## Settings for maven use **absolute paths** and need to be corrected after the pipeline name
-The project will be built inside a folder in the slave workspace that has the same name as you set in the steps above. That means that if you change name or workspace you'll need to change it in the corresponding settings-file you link to.
+The project will be built inside a folder in the slave workspace with the foldername set in the jenkins pipeline configuration. That means that if you change name or workspace you'll need to change it in the corresponding settings-file you link to.
 ---
 ## Config for the pipeline
-For extendability the script is reliant on parameters from the user. These parameters are to be inputted through configuring jenkins and requir the plug in "environment injector".The option "Prepare an environment for the run" then gets available for the user.  
+For extendability the script is reliant on parameters from the user. These parameters are to be inputted through configuring jenkins and requir the plug in "environment injector". The option "Prepare an environment for the run" then gets available for the user.  
 
 example
 sourceRepo='https://github.com/ControlSystemStudio' //the main repo you wish to fetch from
@@ -49,6 +49,6 @@ The idea is to collect the scripts that they have in common and automate a pipel
 
 The pipeline will show up as a job in the Jenkins menu. We want setting up the pipeline to have as little configuration as possible inside the Jenkins portal. No magic should happen in Jenkins. To copy the pipeline all you need to do is to link to the repo the jenkinsfile is in and the path to it from the repo-root.
 
-The different versions job sets do mainly the same thing baring some initial and final steps. We want to bulk the core jobs together in to one pipeline and encapsulate it inside another bigger, version specific pipeline containing parameters for the specific environment and feed them to the core pipeline. Reducing 20+ different scriptfiles down to only 4 with minimal duplication of code.
+The different jobs for the different versions of css do mainly the same thing baring some initial and final steps. We want to bulk the core jobs together in to one pipeline and encapsulate it inside specific environments and feed them to the core pipeline. Reducing 20+ different files down to only one.
 
 ---
