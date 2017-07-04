@@ -135,12 +135,13 @@ pipeline {
       }
       steps{
         script {
-             def server = Artifactory.server ‘artifactory.esss.lu.se’
+             def server = Artifactory.server "${serverID}"
              def uploadSpec = """{
                "files": [
                  {
                    "pattern": "../${buildSpace}/**/*.tar.gz",
-                   "target": "CSSTest/${artifactFolder}/ "
+                   "pattern": "../${buildSpace}/**/*.zip",
+                   "target": "CSSTest/${artifactFolder}/0.1"
                  }
                ]
              }"""
