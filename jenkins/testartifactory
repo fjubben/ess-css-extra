@@ -24,7 +24,7 @@ pipeline {
                    {
                      "pattern": "org.csstudio.ess.product/repository/target/products/*.gz",
 
-                     "target": "CSSTest/${artifactFolder}/0.2/"
+                     "target": "CSSTest/${artifactFolder}/0.3/"
                    }
                  ]
                }"""
