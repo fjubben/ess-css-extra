@@ -135,18 +135,22 @@ pipeline {
       }
       steps{
       dir("../${buildSpace}")
-        script {
-             def server = Artifactory.server "${serverID}"
-             def uploadSpec = """{
-               "files": [
-                 {
-                   "pattern": "org.csstudio.ess.product/repository/target/products/*.tar.gz",
-                   "pattern": "org.csstudio.ess.product/repository/target/products/*.zip",
-                   "target": "CSSTest/${artifactFolder}/0.1"
-                 }
-               ]
-             }"""
-             server.upload(uploadSpec)
+      script { //artifactory plugin doesn't fully support declarative pipeline there for the scrip-block is needed
+           def server = Artifactory.server "${env.serverID}"
+           def versionNBR = sh (script: """grep -oEm 1 -e '<version>(.*?)</version>' ${env.WORKSPACE}/../${env.buildSpace}/org.csstudio.ess.product/pom.xml | cut -d ">" -f2 | cut -d "<" -f1""", returnStdout: true).trim()
+           def uploadSpec = """{
+             "files": [
+               {
+                 "pattern": "org.csstudio.ess.product/repository/target/products/*.tar.gz",
+                 "target": "CSSTest/${artifactFolder}/${versionNBR}/"
+               },
+               {
+                 "pattern": "org.csstudio.ess.product/repository/target/products/*.zip",
+                 "target": "CSSTest/${artifactFolder}/${versionNBR}/"
+               }
+             ]
+           }"""
+           server.upload(uploadSpec)
         }
       }
     }
