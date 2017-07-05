@@ -17,13 +17,14 @@ pipeline {
     stage('test artifact'){
       steps{
         dir("../${env.buildSpace}"){
-          script {
+          script { //artifactory plugin doesn't fully support declarative pipeline there for the scrip-block is needed
                def server = Artifactory.server "${env.serverID}"
                def uploadSpec = """{
                  "files": [
                    {
-                     "pattern": "(org.csstudio.ess.product/repository/target/products/*.tar.gz|org.csstudio.ess.product/repository/target/products/*.zip)",
-                     "target": "CSSTest/${artifactFolder}/0.7/"
+                     "pattern": "(org.csstudio.ess.product/repository/target/products/*.tar.gz|org.csstudio.ess.product/repository/target/products/*.zip)*",
+                     "target": "CSSTest/${artifactFolder}/0.7/",
+                     "regexp": "true"
                    }
                  ]
                }"""
