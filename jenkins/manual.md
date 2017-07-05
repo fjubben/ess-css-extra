@@ -63,8 +63,10 @@ ex slackSend message: "Build Started", token: 'AKrq2kTrwtrFjepxe6OFC5Lu', channe
 
 [Supported steps (predefined methods) for the jenkins file](https://jenkins.io/doc/pipeline/steps/)
 
+[Syntax reference, includes almost everything needed](https://jenkins.io/doc/book/pipeline/syntax/)
+
 ## Useful tips
-use triple ' (''') to bypass groovys templating which can give you trouble sometimes.
+use triple ' (''') for a literal string
 
 substitution (using $variable) requires explicit string sign ("")
 
