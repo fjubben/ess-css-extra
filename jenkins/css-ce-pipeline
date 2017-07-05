@@ -129,18 +129,19 @@ pipeline {
           }
         }
      }
-    stage ('artifact') {
+    stage ('Ship artifact - optional') {
       when {
         environment name: 'pushArtifact', value: 'true'
       }
       steps{
+      dir("../${buildSpace}")
         script {
              def server = Artifactory.server "${serverID}"
              def uploadSpec = """{
                "files": [
                  {
-                   "pattern": "../${buildSpace}/org.csstudio.ess.product/repository/target/products/*.tar.gz",
-                   "pattern": "../${buildSpace}/org.csstudio.ess.product/repository/target/products/*.zip",
+                   "pattern": "org.csstudio.ess.product/repository/target/products/(*.tar.gz|*.zip)",
+                   "pattern": "org.csstudio.ess.product/repository/target/products/*.zip",
                    "target": "CSSTest/${artifactFolder}/0.1"
                  }
                ]

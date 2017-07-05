@@ -16,7 +16,7 @@ sourceRepo='https://github.com/ControlSystemStudio' //the main repo you wish to 
 repoBranch='master' //which branch you wish to checkout
 NEW_WORKSPACE='/home/jenkins/workspace/CSS-CE' //where you want the project to be built (make sure this path is in union with the xml file for maven)
 xmlFile='settings-for-jenkins-ce.xml' //
-pushArtifact='false' //if false then you don't need to worry about anything, if true you need to define [serverID, username, password] as well
+pushArtifact='false' //if false then you don't need to worry about anything, if true you need to define [serverID, artifactFolder] as well
 email='false' // if true then will require [name] as well
 ---
 ## Adding slack integration
