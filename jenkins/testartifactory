@@ -24,7 +24,7 @@ pipeline {
                def uploadSpec = """{
                  "files": [
                    {
-                     "pattern": "org.csstudio.ess.product/repository/target/products/*${versionNBR}*",
+                     "pattern": "org.csstudio.ess.product/repository/target/products/*$versionNBR*",
                      "target": "CSSTest/${artifactFolder}/${versionNBR}/"
                    }
                  ]
