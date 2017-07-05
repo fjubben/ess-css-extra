@@ -19,11 +19,13 @@ pipeline {
         dir("../${env.buildSpace}"){
           script { //artifactory plugin doesn't fully support declarative pipeline there for the scrip-block is needed
                def server = Artifactory.server "${env.serverID}"
+               def versionNBR = sh script: "cat ${env.WORKSPACE}/../${env.buildSpace}/org.csstudio.ess.product/pom.xml | grep -oEm 1 -e '<version>(.*?)<\/version>' | cut -d ">" -f2 | cut -d "<" -f1", returnStdout: true
+               echo versionNBR
                def uploadSpec = """{
                  "files": [
                    {
-                     "pattern": "org.csstudio.ess.product/repository/target/products/*4.5.0.1*",
-                     "target": "CSSTest/${artifactFolder}/0.7/"
+                     "pattern": "org.csstudio.ess.product/repository/target/products/*${versionNBR}*",
+                     "target": "CSSTest/${artifactFolder}/${versionNBR}/"
                    }
                  ]
                }"""
