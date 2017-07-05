@@ -1,7 +1,7 @@
 pipeline {
   environment {
   serverID='artifactory-ess'
-  artifacFolder='jespersfolder'
+  artifactFolder='jespersfolder'
   buildSpace='css-ce'
   }
   agent {
