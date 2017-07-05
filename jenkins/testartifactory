@@ -7,24 +7,31 @@ pipeline {
   agent {
     label 'css'
   }
+  options{
+  disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
+  timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
+  timestamps()
+  skipDefaultCheckout()
+  }
   stages{
     stage('test artifact'){
       steps{
-      dir("../${buildSpace}")
-        script {
-             def server = Artifactory.server "${serverID}"
-             def uploadSpec = """{
-               "files": [
-                 {
-                   "pattern": "org.csstudio.ess.product/repository/target/products/(*.tar.gz|*.zip)",
-                   "pattern": "org.csstudio.ess.product/repository/target/products/*.zip",
-                   "target": "CSSTest/${artifactFolder}/0.1"
-                 }
-               ]
-             }"""
-             server.upload(uploadSpec)
-        }
-      }
+        dir("../${env.buildSpace}"){
+          script {
+               def server = Artifactory.server "${env.serverID}"
+               def uploadSpec = """{
+                 "files": [
+                   {
+                     "pattern": "org.csstudio.ess.product/repository/target/products/(*.tar.gz|*.zip)",
+                     "pattern": "org.csstudio.ess.product/repository/target/products/*.zip",
+                     "target": "CSSTest/${artifactFolder}/0.1"
+                   }
+                 ]
+               }"""
+               server.upload(uploadSpec)
+            }
+          }
+       }
     }
   }
 }
