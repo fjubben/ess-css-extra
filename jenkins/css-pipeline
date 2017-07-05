@@ -152,7 +152,7 @@ pipeline {
     }
     stage('clean up'){
       steps{
-      dir("../${buildSpace"}){
+      dir("../${buildSpace}"){
         deleteDir()
       }
       deleteDir()
