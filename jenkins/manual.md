@@ -9,15 +9,46 @@
 The project will be built inside a folder in the slave workspace with the foldername set in the jenkins pipeline configuration. That means that if you change name or workspace you'll need to change it in the corresponding settings-file you link to.
 ---
 ## Config for the pipeline
-For extendability the script is reliant on parameters from the user. These parameters are to be inputted through configuring jenkins and requir the plug in "environment injector". The option "Prepare an environment for the run" then gets available for the user.  
+For reusability, the script is reliant on parameters from the user. These parameters are to be inputted through configuring jenkins and require the plug in "environment injector". The option "Prepare an environment for the run" then gets available for the user. Variables can then be defined in the textfield "Properties Content".  
 
 example
-sourceRepo='https://github.com/ControlSystemStudio' //the main repo you wish to fetch from
-repoBranch='master' //which branch you wish to checkout
-NEW_WORKSPACE='/home/jenkins/workspace/CSS-CE' //where you want the project to be built (make sure this path is in union with the xml file for maven)
-xmlFile='settings-for-jenkins-ce.xml' //
-pushArtifact='false' //if false then you don't need to worry about anything, if true you need to define [serverID, artifactFolder] as well
-email='false' // if true then will require [name] as well
+sourceRepo=https://github.com/ControlSystemStudio //the main repo you wish to fetch from
+repoBranch=master //which branch you wish to checkout
+buildSpace=css-ce //where you want the project to be built (make sure this path is in union with the xml file for maven)
+xmlFile=settings-for-jenkins-ce.xml //
+pushArtifact=false //if false then you don't need to worry about anything, if true you need to define [serverID, artifactFolder] as well
+email=false // if true then will require [name] as well
+
+---
+## Default environments
+
+### CSS-CE
+sourceRepo=https://github.com/ControlSystemStudio
+repoBranch=master
+buildSpace=css-ce
+xmlFile=settings-for-jenkins-ce.xml
+pushArtifact=false
+email=false
+
+### ess-css-development
+sourceRepo=https://github.com/ControlSystemStudio
+repoBranch=master
+buildSpace=cs-studios
+xmlFile=settings-for-jenkins.xml
+pushArtifact=true
+serverID=artifactory-ess
+artifactFolder=development
+email=false
+
+### ess-css-production
+sourceRepo=https://github.com/ControlSystemStudio
+repoBranch=production
+buildSpace=cs-studio
+xmlFile=settings-for-jenkins.xml
+pushArtifact=true
+serverID=artifactory-ess
+artifactFolder=production
+email=false
 ---
 ## Adding slack integration
 1. download slack notification plugin for jenkins

@@ -1,8 +1,0 @@
-sourceRepo=https://github.com/ControlSystemStudio
-repoBranch=master
-buildSpace=cs-studios
-xmlFile=settings-for-jenkins.xml
-pushArtifact=true
-serverID=artifactory-ess
-artifactFolder=development
-email=false

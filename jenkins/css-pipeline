@@ -25,6 +25,7 @@ pipeline {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
     timestamps()
+    skipDefaultCheckout()
   }
   /*
    * Stages Are as a checkpoint and the steps ran will show up in the jenkins ui.
@@ -48,9 +49,7 @@ pipeline {
            echo "project will be built in to ${env.WORKSPACE}/${env.buildSpace}"
            echo "path to workspace: ${env.WORKSPACE}"
            sh "export"
-
            pwd()
-
            dir("../${buildSpace}"){
              deleteDir() // rm -rf *
            }
