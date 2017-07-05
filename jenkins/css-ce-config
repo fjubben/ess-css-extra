@@ -1,0 +1,6 @@
+sourceRepo=https://github.com/ControlSystemStudio
+repoBranch=master
+buildSpace=css-ce
+xmlFile=settings-for-jenkins-ce.xml
+pushArtifact=false
+email=false

@@ -25,7 +25,6 @@ pipeline {
     disableConcurrentBuilds() //Disallow concurrent executions of the Pipeline
     timeout(time:4, unit: 'HOURS') //Set a timeout period for the Pipeline run, after which Jenkins should abort the Pipeline
     timestamps()
-    skipDefaultCheckout()
   }
   /*
    * Stages Are as a checkpoint and the steps ran will show up in the jenkins ui.
@@ -51,13 +50,10 @@ pipeline {
            sh "export"
 
            pwd()
-           dir(".."){
-             sh "rm -rf ${env.JOB_NAME}"
-           }
+
            dir("../${buildSpace}"){
              deleteDir() // rm -rf *
            }
-           //slackSend message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", token: 'AKrq2kTrwtgPrgnxe6OFC5Lu', channel: "random", teamDomain: "ess-ics"
          }
     }
     stage('clone css-extra 00100'){
@@ -152,6 +148,14 @@ pipeline {
            }"""
            server.upload(uploadSpec)
         }
+      }
+    }
+    stage('clean up'){
+      steps{
+      dir("../${buildSpace"}){
+        deleteDir()
+      }
+      deleteDir()
       }
     }
   }
