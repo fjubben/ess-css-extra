@@ -38,7 +38,7 @@ pipeline {
     /*
      * The individual stage has to have it's name defined
      */
-    stage('workspace-prep 00000, clean up'){
+    stage('workspace-prep 00000'){
          /*
           * Inside the steps block is where all the calls which makes up the pipeline gets called.
           * Look up jenkins step-library for help on each individual step.
