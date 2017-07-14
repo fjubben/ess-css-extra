@@ -26,7 +26,9 @@ node('css') {
         }
     }
     stage('00200 - maven-osgi-bundles '){
+        pwd()
         dir("../${buildFolder}/maven-osgi-bundles"){
+          pwd()
           git(url: "${csstudioRepo}/maven-osgi-bundles.git", branch: "${repoBranch}")
           sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
         }
