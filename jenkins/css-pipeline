@@ -9,7 +9,7 @@ def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enab
     stage('00000 - workspace-prep '){
         echo "csstudioRepo = ${env.csstudioRepo}"
         echo "branch = ${env.repoBranch} \nsend email to: ${env.email}"
-        echo "MVNOPT=${env.MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
+        echo "MVNOPT=${MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
         echo "project will be built in to ${env.WORKSPACE}/${env.buildFolder}"
         echo "path to workspace: ${env.WORKSPACE}"
         sh "export"
@@ -32,42 +32,42 @@ def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enab
         dir("../${buildFolder}/maven-osgi-bundles"){
           pwd()
           git(url: "${csstudioRepo}/maven-osgi-bundles.git", branch: "${repoBranch}")
-          sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+          sh "mvn ${MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
         }
     }
     stage('00300 - cs-studio-thirdparty'){
         dir("../${buildFolder}/cs-studio-thirdparty"){
           git(url: "${csstudioRepo}/cs-studio-thirdparty.git", branch: "${repoBranch}")
-          sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+          sh "mvn ${MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
         }
     }
     stage('00400 - diirt'){
         dir("../${buildFolder}/diirt"){
           git(url: "${csstudioRepo}/diirt", branch: "${repoBranch}")
-          sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+          sh "mvn ${MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
         }
     }
     stage('00500 - cs-studio'){
         dir("../${buildFolder}/cs-studio"){
           git(url: "${csstudioRepo}/cs-studio", branch: "${repoBranch}")
           dir("core"){
-            sh "mvn ${env.MVNOPT} --settings  ../../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+            sh "mvn ${MVNOPT} --settings  ../../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
           }
           dir("applications"){
-            sh "mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+            sh "mvn ${MVNOPT} --settings ../../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
           }
         }
     }
     stage('00550 - org.csstudio.display.builder'){
         dir("../${buildFolder}/org.csstudio.display.builder"){
           git(url: "${env.displayBuilderRepo}", branch: "${repoBranch}")
-          sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml -Dcss_repo=file:${env.WORKSPACE}/../${env.buildFolder}/ess-css-extra/ess_css_comp_repo clean verify"
+          sh "mvn ${MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml -Dcss_repo=file:${env.WORKSPACE}/../${env.buildFolder}/ess-css-extra/ess_css_comp_repo clean verify"
         }
     }
     stage('00600 - org.csstudio.product'){
         dir("../${buildFolder}/org.csstudio.product"){
           git(url: "${csstudioRepo}/org.csstudio.product.git", branch: "${repoBranch}")
-          sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+          sh "mvn ${MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
         }
 
     }
@@ -75,7 +75,7 @@ def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enab
       steps{
         dir("../${buildFolder}/org.csstudio.ess.product"){
           git(url: "${csstudioRepo}/org.csstudio.ess.product.git", branch: "${repoBranch}")
-          sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
+          sh "mvn ${MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
         }
       }
     }
