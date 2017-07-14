@@ -1,9 +1,11 @@
 #!groovy​
 
+
+node('css') {
+
 def MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
 def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
 
-node('css') {
     stage('00000 - workspace-prep '){
         echo "csstudioRepo = ${env.csstudioRepo}"
         echo "branch = ${env.repoBranch} \nsend email to: ${env.email}"
