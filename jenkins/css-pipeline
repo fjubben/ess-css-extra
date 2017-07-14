@@ -5,7 +5,6 @@ def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enab
 
 node('css') {
     stage('00000 - workspace-prep '){
-      steps{
         echo "csstudioRepo = ${env.csstudioRepo}"
         echo "branch = ${env.repoBranch} \nsend email to: ${env.email}"
         echo "MVNOPT=${env.MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
@@ -16,7 +15,6 @@ node('css') {
         dir("../${buildFolder}"){
           deleteDir() // rm -rf *
         }
-      }
     }
     stage('00100 - clone css-extra'){
         dir("../${buildFolder}/ess-css-extra"){
@@ -34,7 +32,6 @@ node('css') {
         }
     }
     stage('00300 - cs-studio-thirdparty'){
-
         dir("../${buildFolder}/cs-studio-thirdparty"){
           git(url: "${csstudioRepo}/cs-studio-thirdparty.git", branch: "${repoBranch}")
           sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
@@ -64,7 +61,6 @@ node('css') {
         }
     }
     stage('00600 - org.csstudio.product'){
-
         dir("../${buildFolder}/org.csstudio.product"){
           git(url: "${csstudioRepo}/org.csstudio.product.git", branch: "${repoBranch}")
           sh "mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins-sed.xml clean verify"
