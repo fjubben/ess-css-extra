@@ -8,6 +8,8 @@ def pa = new ParametersAction([
   new StringParameterValue("MAVEN_OPTS", "-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit")
 ])
 build.addAction(pa)
+
+
 def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites"
 
     stage('00000 - workspace-prep '){
@@ -16,7 +18,7 @@ def MVNOPT="-B -P ess-css-settings,platform-default,csstudio-composite-repo-enab
         echo "MVNOPT=${MVNOPT}  \nrunning on jenkinslave: ${env.NODE_NAME}"
         echo "project will be built in to ${env.WORKSPACE}/${env.buildFolder}"
         echo "path to workspace: ${env.WORKSPACE}"
-        sh "export"
+        sh "export MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit""
         pwd()
         dir("../${buildFolder}"){
           deleteDir() // rm -rf *
