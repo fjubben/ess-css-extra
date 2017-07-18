@@ -9,7 +9,7 @@ pipeline {
    */
   environment {
     MAVEN_OPTS="-Xmx2048m -Xms1024M -Xss128M -XX:-UseGCOverheadLimit"
-    MVNOPT="-B -q -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites "
+    MVNOPT="-B -X -e -P ess-css-settings,platform-default,csstudio-composite-repo-enable,eclipse-sites "
   }
 
   /*
