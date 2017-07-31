@@ -18,8 +18,12 @@ pipeline {
    * Can be applied to each stage separately or here to set for all stages.
    */
    agent {
-      label 'css'
+      docker {
+        image 'europeanspallationsource/oracle-jdk-maven'
+        label 'css'
+      }
     }
+
     /*
      * build specific options, the same as the checkboxes for the jobs inside jenkins
      */
