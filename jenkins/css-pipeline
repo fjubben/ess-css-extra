@@ -77,7 +77,7 @@ pipeline {
           dir("maven-osgi-bundles"){
             git(url: "${env.csstudioRepo}/maven-osgi-bundles.git", branch: "${env.repoBranch}")
           }
-          sh "cd maven-osgi-bundles && mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
+          sh "cd maven-osgi-bundles && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
         }
       }
 
@@ -102,7 +102,7 @@ pipeline {
           dir("diirt"){
             git(url: "${env.diirtRepo}", branch: "${env.repoBranch}")
           }
-          sh "cd diirt && mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
+          sh "cd diirt && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
         }
       }
 
@@ -117,8 +117,8 @@ pipeline {
             dir('core'){}
           }
           sh 'ls cs-studio'
-          sh "cd cs-studio/core && mvn ${env.MVNOPT} --settings  ../../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
-          sh "cd cs-studio/applications && mvn ${env.MVNOPT} --settings ../../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
+          sh "cd cs-studio/core && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings  ../../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
+          sh "cd cs-studio/applications && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings ../../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
         }
       }
 
@@ -130,7 +130,7 @@ pipeline {
           dir("org.csstudio.display.builder"){
             git(url: "${env.displayBuilderRepo}", branch: "${env.repoBranch}")
           }
-          sh "cd org.csstudio.display.builder && mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins.xml -Dcss_repo=file:${env.WORKSPACE}/ess-css-extra/ess_css_comp_repo clean verify"
+          sh "cd org.csstudio.display.builder && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings ../ess-css-extra/maven/settings-for-jenkins.xml -Dcss_repo=file:${env.WORKSPACE}/ess-css-extra/ess_css_comp_repo clean verify"
         }
       }
 
@@ -142,7 +142,7 @@ pipeline {
           dir("org.csstudio.product"){
             git(url: "${csstudioRepo}/org.csstudio.product.git", branch: "${env.repoBranch}")
           }
-          sh "cd org.csstudio.product && mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
+          sh "cd org.csstudio.product && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
         }
       }
 
@@ -154,7 +154,7 @@ pipeline {
           dir("org.csstudio.ess.product"){
             git(url: "${csstudioRepo}/org.csstudio.ess.product.git", branch: "${env.repoBranch}")
           }
-          sh "cd org.csstudio.ess.product && mvn ${env.MVNOPT} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
+          sh "cd org.csstudio.ess.product && mvn ${env.MVNOPT} ${env.extraMVNOpts} --settings ../ess-css-extra/maven/settings-for-jenkins.xml clean verify"
         }
       }
 

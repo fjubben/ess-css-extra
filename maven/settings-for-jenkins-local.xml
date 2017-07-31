@@ -2,7 +2,7 @@
 <settings>
 
   <localRepository>
-    /home/jenkins/workspace/###replace###/.m2
+    /home/jenkins/workspace/css-maven-repo/.m2
   </localRepository>
 
   <profiles>
@@ -16,6 +16,10 @@
              local repositories.
            -->
            <!-- Path to your composite repo -->
+           <repositories>
+             <repository>
+             </repository>
+           </repositories>
            <csstudio.composite.repo>/home/jenkins/workspace/###replace###/ess-css-extra/ess_css_comp_repo</csstudio.composite.repo>
 
         <!-- By default, even if you use a composite repo
